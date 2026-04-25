@@ -57,6 +57,11 @@ const heroImage = {
   alt: "Bridal gold necklace set",
 };
 
+const traditionalImage = {
+  src: "/traditional.jpeg",
+  alt: "Traditional jewellery display from New J.K. Jewellers",
+};
+
 const showcaseItems = [
   {
     title: "Bridal Grandeur",
@@ -177,6 +182,10 @@ function MarqueeStrip({ items, reverse = false }) {
   );
 }
 
+function BrandLogo({ className = "brand-logo", alt = "NJK Jewellers logo" }) {
+  return <img className={className} src="/njk_logo.svg" alt={alt} />;
+}
+
 function Header({ page, menuOpen, onMenuToggle, onNavigate }) {
   const collectionsHref = page === "about" ? "#/" : "#collections";
   const visitHref = page === "about" ? "#/" : "#visit";
@@ -185,7 +194,7 @@ function Header({ page, menuOpen, onMenuToggle, onNavigate }) {
   return (
     <header className="topbar fade-rise">
       <div className="brand-lockup">
-        <div className="brand-mark">NJ</div>
+        <BrandLogo />
         <div>
           <p className="eyebrow">Since 1962</p>
           <h1>New J.K. Jewellers</h1>
@@ -465,6 +474,17 @@ function AboutPage() {
               rings, bridal styles, festive sets, and timeless traditional
               pieces.
             </p>
+            <div className="about-traditional-card story-image">
+              <img
+                src={traditionalImage.src}
+                alt={traditionalImage.alt}
+                className="media-image"
+              />
+              <div className="about-traditional-copy">
+                <p className="card-label">Traditional Collection</p>
+                <strong>Classic styles that reflect the store's heritage.</strong>
+              </div>
+            </div>
             <p className="about-body">
               Our aim is simple: to help every customer find jewellery that
               feels valuable, beautiful, and meaningful for years to come.
@@ -741,6 +761,7 @@ function Footer() {
       <div className="full-bleed-shell section-inner">
         <div className="footer-grid">
           <div className="footer-brand">
+            <BrandLogo className="footer-logo" />
             <p className="section-kicker footer-kicker">New J.K. Jewellers</p>
             <h3>Trusted jewellery heritage since 1962.</h3>
             <p>
