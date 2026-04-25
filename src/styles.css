@@ -513,6 +513,319 @@ a {
   font-size: 1rem;
 }
 
+.about-section {
+  position: relative;
+  padding: 28px 0 80px;
+  overflow: hidden;
+}
+
+.about-orb {
+  position: absolute;
+  top: 44px;
+  right: -110px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 163, 62, 0.16), transparent 68%);
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+.about-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.96fr 1.04fr;
+  gap: 34px;
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-radius: 36px;
+  background:
+    linear-gradient(145deg, rgba(255, 252, 244, 0.95), rgba(243, 230, 193, 0.76)),
+    var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.about-left,
+.about-right {
+  position: relative;
+  z-index: 1;
+}
+
+.about-image-mosaic {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 18px;
+}
+
+.mosaic-main,
+.mosaic-third {
+  min-height: 300px;
+}
+
+.mosaic-main {
+  grid-row: span 2;
+  min-height: 100%;
+}
+
+.mosaic-sub {
+  min-height: 220px;
+}
+
+.mosaic-accent {
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  border-radius: 30px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at top, rgba(255, 251, 240, 0.9), transparent 55%),
+    linear-gradient(160deg, rgba(200, 158, 84, 0.92), rgba(125, 86, 12, 0.92));
+  box-shadow: var(--shadow);
+}
+
+.mosaic-accent-inner {
+  width: 100%;
+  padding: 28px 18px;
+  border-radius: 24px;
+  text-align: center;
+  color: #fff8ea;
+  border: 1px solid rgba(255, 240, 198, 0.24);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.accent-num {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.8rem, 6vw, 4.3rem);
+  line-height: 0.9;
+}
+
+.accent-label {
+  display: block;
+  margin-top: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.76rem;
+}
+
+.mosaic-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 250, 241, 0.86);
+  border: 1px solid rgba(201, 163, 62, 0.28);
+  color: var(--gold-deep);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.about-heading {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.8rem, 5.4vw, 4.8rem);
+  line-height: 0.9;
+}
+
+.about-heading em,
+.gallery-section-title em {
+  font-style: italic;
+  color: var(--gold-deep);
+}
+
+.about-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 24px 0;
+}
+
+.about-divider span {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, rgba(201, 163, 62, 0.5), transparent);
+}
+
+.about-divider .divider-gem {
+  flex: 0 0 auto;
+  height: auto;
+  background: none;
+  color: var(--gold);
+  font-size: 0.95rem;
+}
+
+.about-lead,
+.about-body {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 1rem;
+}
+
+.about-body {
+  margin-top: 16px;
+}
+
+.about-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.pillar-card {
+  padding: 20px;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: rgba(255, 252, 245, 0.84);
+  box-shadow: 0 16px 38px rgba(92, 64, 14, 0.08);
+}
+
+.pillar-index {
+  margin-bottom: 14px;
+  color: var(--gold-deep);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.pillar-card strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.pillar-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.about-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.gallery-section {
+  padding: 0 0 88px;
+}
+
+.gallery-section-header {
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+
+.gallery-section-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  line-height: 0.95;
+}
+
+.gallery-section-sub {
+  margin: 18px 0 0;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 62ch;
+}
+
+.gallery-masonry {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.gallery-tile {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  background: rgba(255, 252, 245, 0.82);
+  box-shadow: var(--shadow);
+}
+
+.gallery-tile-1,
+.gallery-tile-4 {
+  grid-column: span 5;
+}
+
+.gallery-tile-2,
+.gallery-tile-5 {
+  grid-column: span 3;
+}
+
+.gallery-tile-3,
+.gallery-tile-6 {
+  grid-column: span 4;
+}
+
+.gallery-tile-img-wrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, rgba(255, 248, 232, 0.92), transparent 52%),
+    linear-gradient(160deg, rgba(239, 221, 175, 0.92), rgba(203, 162, 88, 0.75));
+}
+
+.gallery-tile-img-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 24%),
+    linear-gradient(180deg, transparent 65%, rgba(45, 36, 23, 0.08) 100%);
+  pointer-events: none;
+}
+
+.gallery-tile-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  padding: 16px;
+}
+
+.gallery-tile-info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 18px 18px 20px;
+}
+
+.gallery-tile-num {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(201, 163, 62, 0.12);
+  color: var(--gold-deep);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.2rem;
+}
+
+.gallery-tile-title {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1.05rem;
+}
+
+.gallery-tile-note {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .marquee-hero {
   overflow: hidden;
   background:
@@ -870,6 +1183,7 @@ a {
 @media (max-width: 1024px) {
   .hero-intro,
   .story-section,
+  .about-inner,
   .marquee-content,
   .visit-section {
     grid-template-columns: 1fr;
@@ -883,6 +1197,21 @@ a {
 
   .gallery-shell {
     grid-template-columns: 1fr;
+  }
+
+  .about-pillars,
+  .gallery-masonry {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-tile,
+  .gallery-tile-1,
+  .gallery-tile-2,
+  .gallery-tile-3,
+  .gallery-tile-4,
+  .gallery-tile-5,
+  .gallery-tile-6 {
+    grid-column: span 1;
   }
 
   .gallery-intro {
@@ -913,6 +1242,15 @@ a {
 
   .hero-visual {
     min-height: 420px;
+  }
+
+  .about-image-mosaic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mosaic-main {
+    grid-row: auto;
+    min-height: 340px;
   }
 
   .gallery-card-1,
@@ -968,6 +1306,8 @@ a {
   .showcase-grid,
   .highlight-grid,
   .gallery-grid,
+  .about-pillars,
+  .gallery-masonry,
   .footer-grid {
     grid-template-columns: 1fr;
   }
@@ -987,8 +1327,39 @@ a {
     min-height: 280px;
   }
 
+  .about-section,
+  .gallery-section {
+    padding-bottom: 44px;
+  }
+
+  .about-inner {
+    padding: 24px;
+    gap: 26px;
+  }
+
+  .about-image-mosaic {
+    grid-template-columns: 1fr;
+  }
+
+  .mosaic-main,
+  .mosaic-sub,
+  .mosaic-accent,
+  .mosaic-third {
+    min-height: 260px;
+  }
+
+  .gallery-tile-img-wrap {
+    aspect-ratio: 1 / 1;
+  }
+
+  .gallery-tile-info {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
   .story-section,
   .image-showcase,
+  .about-section,
   .highlights,
   .collection-gallery {
     padding-top: 40px;
