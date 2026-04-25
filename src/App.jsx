@@ -114,13 +114,48 @@ const marqueeImages = [
 ];
 
 const galleryItems = [
-  { src: "/necklace/neck2.jpeg", alt: "Gold necklace set 1" },
-  { src: "/necklace/neck3.jpeg", alt: "Gold necklace set 2" },
-  { src: "/necklace/neck4.jpeg", alt: "Gold necklace set 3" },
-  { src: "/necklace/neck6.jpeg", alt: "Gold necklace set 4" },
-  { src: "/necklace/neck7.jpeg", alt: "Gold necklace set 5" },
-  { src: "/necklace/neck9.jpeg", alt: "Gold necklace set 6" },
-  { src: "/necklace/earings3.jpeg", alt: "Elegant earrings pair" },
+  {
+    src: "/necklace/neck2.jpeg",
+    alt: "Gold necklace set 1",
+    title: "Ceremonial Layers",
+    note: "Rich bridal styling with a regal silhouette.",
+  },
+  {
+    src: "/necklace/neck3.jpeg",
+    alt: "Gold necklace set 2",
+    title: "Soft Heritage",
+    note: "Classic detailing chosen for festive dressing.",
+  },
+  {
+    src: "/necklace/neck4.jpeg",
+    alt: "Gold necklace set 3",
+    title: "Traditional Finish",
+    note: "Warm gold textures with timeless appeal.",
+  },
+  {
+    src: "/necklace/neck6.jpeg",
+    alt: "Gold necklace set 4",
+    title: "Bridal Focus",
+    note: "Statement work designed for wedding moments.",
+  },
+  {
+    src: "/necklace/neck7.jpeg",
+    alt: "Gold necklace set 5",
+    title: "Festive Edit",
+    note: "Elegant volume for family occasions and gifting.",
+  },
+  {
+    src: "/necklace/neck9.jpeg",
+    alt: "Gold necklace set 6",
+    title: "Showroom Selection",
+    note: "A glimpse of the richer catalogue available in store.",
+  },
+  {
+    src: "/necklace/earings3.jpeg",
+    alt: "Elegant earrings pair",
+    title: "Earring Accent",
+    note: "Refined sparkle for lighter occasion wear.",
+  },
 ];
 
 function MarqueeStrip({ items, reverse = false }) {
@@ -313,17 +348,30 @@ function App() {
         </section>
 
         <section className="collection-gallery fade-rise delay-5">
-          <div className="highlights-heading">
-            <p className="section-kicker">More From The Collection</p>
-            <h3>Additional photos from your uploaded catalogue</h3>
-          </div>
+          <div className="gallery-shell">
+            <div className="gallery-intro">
+              <p className="section-kicker">Catalogue Highlights</p>
+              <h3>More signature pieces from the showroom collection.</h3>
+              <p>
+                A curated mix of bridal sets, festive designs, and elegant accents from the wider
+                catalogue available at New J.K. Jewellers.
+              </p>
+            </div>
 
-          <div className="gallery-grid">
-            {galleryItems.map((item, index) => (
-              <article key={item.src} className={`gallery-card gallery-card-${(index % 3) + 1}`}>
-                <img src={item.src} alt={item.alt} className="media-image" />
-              </article>
-            ))}
+            <div className="gallery-grid">
+              {galleryItems.map((item, index) => (
+                <article
+                  key={item.src}
+                  className={`gallery-card gallery-card-${(index % 4) + 1}`}
+                >
+                  <img src={item.src} alt={item.alt} className="media-image" />
+                  <div className="gallery-copy">
+                    <span>{item.title}</span>
+                    <p>{item.note}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
