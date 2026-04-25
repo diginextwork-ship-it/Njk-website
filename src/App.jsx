@@ -196,9 +196,10 @@ function App() {
             <p className="section-kicker">Timeless Craft, Heirloom Detail</p>
             <h2>Jewellery chosen with trust, tradition, and royal elegance.</h2>
             <p className="lead">
-              New J.K. Jewellers has been serving customers since 1962 with carefully selected
-              bridal, festive, traditional, and everyday jewellery pieces in a welcoming showroom
-              experience led by owner Hemant Soni.
+              New J.K. Jewellers has been serving customers since 1962 with
+              carefully selected bridal, festive, traditional, and everyday
+              jewellery pieces in a welcoming showroom experience led by owner
+              Hemant Soni.
             </p>
             <div className="hero-stats">
               <div>
@@ -215,29 +216,43 @@ function App() {
               </div>
             </div>
             <div className="hero-actions">
-              <a className="btn btn-solid" href="#visit">Plan Your Visit</a>
-              <a className="btn btn-outline" href="#about">Our Story</a>
+              <a className="btn btn-solid" href="#visit">
+                Plan Your Visit
+              </a>
+              <a className="btn btn-outline" href="#about">
+                Our Story
+              </a>
             </div>
           </div>
 
           <div className="hero-visual">
             <div className="hero-frame hero-frame-main">
-              <img src={heroImage.src} alt={heroImage.alt} className="media-image" />
+              <img
+                src={heroImage.src}
+                alt={heroImage.alt}
+                className="media-image"
+              />
               <div className="frame-copy">
                 <p className="card-label">Signature Bridal Edit</p>
-                <strong>Classic designs presented with warmth and personal attention</strong>
+                <strong>
+                  Classic designs presented with warmth and personal attention
+                </strong>
               </div>
             </div>
             <div className="hero-frame hero-frame-small floating-card">
               <p className="card-label">Showroom Details</p>
               <p>
-                Panna Naka, in front of Parmar Hospital, beside Jain Chhore Bhature.
+                Panna Naka, in front of Parmar Hospital, beside Jain Chhore
+                Bhature.
               </p>
             </div>
           </div>
         </section>
 
-        <section className="image-showcase fade-rise delay-2" aria-label="Jewellery showcase">
+        <section
+          className="image-showcase fade-rise delay-2"
+          aria-label="Jewellery showcase"
+        >
           <div className="showcase-heading">
             <p className="section-kicker">Featured Frames</p>
             <h3>Real product photography added from your public folder</h3>
@@ -245,7 +260,10 @@ function App() {
 
           <div className="showcase-grid">
             {showcaseItems.map((item, index) => (
-              <article key={item.title} className={`showcase-tile tile-${index + 1}`}>
+              <article
+                key={item.title}
+                className={`showcase-tile tile-${index + 1}`}
+              >
                 <img src={item.src} alt={item.alt} className="media-image" />
                 <div className="tile-badge">0{index + 1}</div>
                 <div className="tile-copy">
@@ -257,49 +275,142 @@ function App() {
           </div>
         </section>
 
-        <section className="story-section fade-rise delay-3" id="about">
-          <div className="story-gallery">
-            <div className="story-image large-card">
-              <img src={storyImages[0].src} alt={storyImages[0].alt} className="media-image" />
-              <div className="image-placeholder">{storyImages[0].label}</div>
-            </div>
-            <div className="story-stack">
-              <div className="story-image small-card">
-                <img src={storyImages[1].src} alt={storyImages[1].alt} className="media-image" />
-                <div className="image-placeholder">{storyImages[1].label}</div>
+        {/* ── ABOUT US ─────────────────────────────────────────────── */}
+        <section className="about-section fade-rise delay-3" id="about">
+          {/* decorative orb */}
+          <div className="about-orb" aria-hidden="true" />
+
+          <div className="about-inner">
+            {/* LEFT column */}
+            <div className="about-left">
+              <div className="about-image-mosaic">
+                <div className="mosaic-main story-image">
+                  <img
+                    src={storyImages[0].src}
+                    alt={storyImages[0].alt}
+                    className="media-image"
+                  />
+                  <div className="mosaic-badge">Est. 1962</div>
+                </div>
+                <div className="mosaic-sub story-image">
+                  <img
+                    src={storyImages[1].src}
+                    alt={storyImages[1].alt}
+                    className="media-image"
+                  />
+                </div>
+                <div className="mosaic-accent">
+                  <div className="mosaic-accent-inner">
+                    <span className="accent-num">60+</span>
+                    <span className="accent-label">
+                      Years of
+                      <br />
+                      Trust
+                    </span>
+                  </div>
+                </div>
+                <div className="mosaic-third story-image">
+                  <img
+                    src={storyImages[2].src}
+                    alt={storyImages[2].alt}
+                    className="media-image"
+                  />
+                </div>
               </div>
-              <div className="story-image small-card accent-card">
-                <img src={storyImages[2].src} alt={storyImages[2].alt} className="media-image" />
-                <div className="image-placeholder">{storyImages[2].label}</div>
+            </div>
+
+            {/* RIGHT column */}
+            <div className="about-right">
+              <p className="section-kicker">About The House</p>
+              <h3 className="about-heading">
+                A Legacy Woven
+                <br />
+                <em>in Gold &amp; Trust</em>
+              </h3>
+
+              <div className="about-divider">
+                <span />
+                <span className="divider-gem">◆</span>
+                <span />
+              </div>
+
+              <p className="about-lead">
+                New J.K. Jewellers is a long-standing jewellery showroom serving
+                the local community since <strong>1962</strong>. Under the
+                guidance of owner <strong>Hemant Soni</strong>, the showroom is
+                known for a dependable approach, respectful service, and
+                jewellery curated for everyday elegance and cherished family
+                occasions alike.
+              </p>
+              <p className="about-body">
+                Located at <strong>Panna Naka</strong>, in front of Parmar
+                Hospital, beside Jain Chhore Bhature — the store is a familiar,
+                trusted destination where customers explore necklaces, earrings,
+                rings, bridal styles, festive sets, and timeless traditional
+                pieces. Our aim is simple: to help every customer find jewellery
+                that feels valuable, beautiful, and meaningful for years to
+                come.
+              </p>
+
+              <div className="about-pillars">
+                {storyPoints.map((point, i) => (
+                  <div key={point.title} className="pillar-card">
+                    <div className="pillar-index">0{i + 1}</div>
+                    <strong>{point.title}</strong>
+                    <p>{point.text}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="about-cta">
+                <a className="btn btn-solid" href="#visit">
+                  Visit The Showroom
+                </a>
+                <a className="btn btn-outline" href="tel:+919826237997">
+                  Call Hemant Soni
+                </a>
               </div>
             </div>
           </div>
+        </section>
 
-          <div className="story-copy">
-            <p className="section-kicker">About The House</p>
-            <h3>About Us</h3>
-            <p>
-              New J.K. Jewellers is a long-standing jewellery showroom serving the local community
-              since 1962. Under the guidance of owner Hemant Soni, the showroom is known for a
-              dependable approach, respectful customer service, and jewellery selected to suit both
-              everyday elegance and important family occasions.
+        {/* ── GALLERY ──────────────────────────────────────────────── */}
+        <section className="gallery-section fade-rise delay-5" id="gallery">
+          <div className="gallery-section-header">
+            <p className="section-kicker">Catalogue Highlights</p>
+            <h3 className="gallery-section-title">
+              Signature Pieces from
+              <br />
+              <em>the Showroom Collection</em>
+            </h3>
+            <p className="gallery-section-sub">
+              A curated mix of bridal sets, festive designs, and elegant accents
+              — every photograph shows the full piece, uncropped.
             </p>
-            <p>
-              Located at Panna Naka in front of Parmar Hospital, beside Jain Chhore Bhature, the
-              store offers a familiar and trusted place for customers to explore necklaces,
-              earrings, rings, bridal styles, festive sets, and timeless traditional pieces. The
-              aim is simple: to help every customer find jewellery that feels valuable, beautiful,
-              and meaningful for years to come.
-            </p>
+          </div>
 
-            <div className="story-points">
-              {storyPoints.map((point) => (
-                <div key={point.title}>
-                  <strong>{point.title}</strong>
-                  <p>{point.text}</p>
+          <div className="gallery-masonry">
+            {galleryItems.map((item, index) => (
+              <article
+                key={item.src}
+                className={`gallery-tile gallery-tile-${(index % 3) + 1}`}
+              >
+                <div className="gallery-tile-img-wrap">
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="gallery-tile-img"
+                  />
                 </div>
-              ))}
-            </div>
+                <div className="gallery-tile-info">
+                  <span className="gallery-tile-num">0{index + 1}</span>
+                  <div>
+                    <strong className="gallery-tile-title">{item.title}</strong>
+                    <p className="gallery-tile-note">{item.note}</p>
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -333,12 +444,17 @@ function App() {
                   Earrings
                 </h3>
                 <p>
-                  A rich display of elegant earrings, necklace sets, and occasion-ready styles that
-                  reflect the classic identity of New J.K. Jewellers.
+                  A rich display of elegant earrings, necklace sets, and
+                  occasion-ready styles that reflect the classic identity of New
+                  J.K. Jewellers.
                 </p>
                 <div className="hero-actions">
-                  <a className="btn btn-outline" href="#visit">Book A Visit</a>
-                  <a className="btn btn-solid" href="#contact">Make Enquiry</a>
+                  <a className="btn btn-outline" href="#visit">
+                    Book A Visit
+                  </a>
+                  <a className="btn btn-solid" href="#contact">
+                    Make Enquiry
+                  </a>
                 </div>
               </div>
             </div>
@@ -347,38 +463,12 @@ function App() {
           </div>
         </section>
 
-        <section className="collection-gallery fade-rise delay-5">
-          <div className="gallery-shell">
-            <div className="gallery-intro">
-              <p className="section-kicker">Catalogue Highlights</p>
-              <h3>More signature pieces from the showroom collection.</h3>
-              <p>
-                A curated mix of bridal sets, festive designs, and elegant accents from the wider
-                catalogue available at New J.K. Jewellers.
-              </p>
-            </div>
-
-            <div className="gallery-grid">
-              {galleryItems.map((item, index) => (
-                <article
-                  key={item.src}
-                  className={`gallery-card gallery-card-${(index % 4) + 1}`}
-                >
-                  <img src={item.src} alt={item.alt} className="media-image" />
-                  <div className="gallery-copy">
-                    <span>{item.title}</span>
-                    <p>{item.note}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="highlights fade-rise delay-6">
           <div className="highlights-heading">
             <p className="section-kicker">Why People Visit</p>
-            <h3>A showroom experience with warmth, assurance, and visual richness.</h3>
+            <h3>
+              A showroom experience with warmth, assurance, and visual richness.
+            </h3>
           </div>
 
           <div className="highlight-grid">
@@ -396,9 +486,10 @@ function App() {
             <p className="section-kicker">Visit The Showroom</p>
             <h3>Come experience the collection in person.</h3>
             <p>
-              Visit New J.K. Jewellers at Panna Naka, in front of Parmar Hospital, beside Jain
-              Chhore Bhature. We welcome you for bridal shopping, festive jewellery, gifting, and
-              classic daily-wear selections with personal assistance at every step.
+              Visit New J.K. Jewellers at Panna Naka, in front of Parmar
+              Hospital, beside Jain Chhore Bhature. We welcome you for bridal
+              shopping, festive jewellery, gifting, and classic daily-wear
+              selections with personal assistance at every step.
             </p>
           </div>
 
@@ -406,7 +497,10 @@ function App() {
             <p>Mon - Sun</p>
             <strong>10:30 AM - 8:30 PM</strong>
             <p>Owner: Hemant Soni</p>
-            <p>Panna Naka, in front of Parmar Hospital, beside Jain Chhore Bhature</p>
+            <p>
+              Panna Naka, in front of Parmar Hospital, beside Jain Chhore
+              Bhature
+            </p>
             <a className="btn btn-solid full-width" href="tel:+919826237997">
               Call For Appointment
             </a>
@@ -421,17 +515,21 @@ function App() {
               <p className="section-kicker footer-kicker">New J.K. Jewellers</p>
               <h3>Trusted jewellery heritage since 1962.</h3>
               <p>
-                A traditional jewellery destination at Panna Naka, known for elegant designs,
-                reliable service, and a personal shopping experience guided by Hemant Soni.
+                A traditional jewellery destination at Panna Naka, known for
+                elegant designs, reliable service, and a personal shopping
+                experience guided by Hemant Soni.
               </p>
             </div>
 
             <div className="footer-contact">
               <h4>Contact</h4>
               <p>Owner: Hemant Soni</p>
-              <p>Phone: <a href="tel:+919826237997">+91 98262 37997</a></p>
               <p>
-                Address: Panna Naka, in front of Parmar Hospital, beside Jain Chhore Bhature
+                Phone: <a href="tel:+919826237997">+91 98262 37997</a>
+              </p>
+              <p>
+                Address: Panna Naka, in front of Parmar Hospital, beside Jain
+                Chhore Bhature
               </p>
             </div>
 
