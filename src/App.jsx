@@ -159,6 +159,8 @@ const galleryItems = [
 
 const address =
   "Panna Naka, in front of Parmar Hospital, beside Jain Chhole Bhature.";
+const mapUrl =
+  "https://www.google.com/maps/place/New+J.K+Jewellers/@24.8974852,79.5924215,17z/data=!3m1!4b1!4m6!3m5!1s0x398297e87ee859e1:0xb3bdde3c609c6bec!8m2!3d24.8974852!4d79.5924215!16s%2Fg%2F11cmpf117k?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D";
 
 function getCurrentPage() {
   return window.location.hash.startsWith("#/about") ? "about" : "home";
@@ -184,6 +186,46 @@ function MarqueeStrip({ items, reverse = false }) {
 
 function BrandLogo({ className = "brand-logo", alt = "NJK Jewellers logo" }) {
   return <img className={className} src="/njk_logo.svg" alt={alt} />;
+}
+
+function FloatingLocationButton({ onClick }) {
+  return (
+    <button
+      type="button"
+      className="floating-location-btn"
+      aria-label="Show showroom details"
+      onClick={onClick}
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" />
+        <circle cx="12" cy="10" r="2.8" />
+      </svg>
+    </button>
+  );
+}
+
+function FloatingLocationCard({ open, onClose }) {
+  if (!open) {
+    return null;
+  }
+
+  return (
+    <div className="floating-location-card fade-rise" role="dialog" aria-label="Showroom details">
+      <button
+        type="button"
+        className="floating-location-close"
+        aria-label="Close showroom details"
+        onClick={onClose}
+      >
+        ×
+      </button>
+      <p className="section-kicker">Showroom Details</p>
+      <p className="floating-location-address">{address}</p>
+      <a className="btn btn-solid full-width" href={mapUrl} target="_blank" rel="noreferrer">
+        Open Maps
+      </a>
+    </div>
+  );
 }
 
 function Header({ page, menuOpen, onMenuToggle, onNavigate }) {
@@ -599,10 +641,6 @@ function HomePage() {
               </strong>
             </div>
           </div>
-          <div className="hero-frame hero-frame-small floating-card">
-            <p className="card-label">Showroom Details</p>
-            <p>{address}</p>
-          </div>
         </div>
       </section>
 
@@ -728,7 +766,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="visit-section fade-rise delay-6" id="visit">
+      <section className="visit-section fade-rise delay-6" id="ss">
         <div className="visit-copy">
           <p className="section-kicker">Visit The Showroom</p>
           <h3>Come experience the collection in person.</h3>
@@ -744,6 +782,14 @@ function HomePage() {
           <strong>10:30 AM - 8:30 PM</strong>
           <p>Owner: Hemant Soni</p>
           <p>{address}</p>
+          <a
+            className="btn btn-outline full-width"
+            href={mapUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Click Here
+          </a>
           <a className="btn btn-solid full-width" href="tel:+919826237997">
             Call For Appointment
           </a>
@@ -810,6 +856,7 @@ function App() {
   const [page, setPage] = useState(getCurrentPage);
   const [menuOpen, setMenuOpen] = useState(false);
   const [leadModalOpen, setLeadModalOpen] = useState(true);
+  const [locationCardOpen, setLocationCardOpen] = useState(false);
 
   useEffect(() => {
     const syncPage = () => {
@@ -828,6 +875,7 @@ function App() {
 
   const handleNavigate = (targetPage) => {
     setMenuOpen(false);
+    setLocationCardOpen(false);
 
     if (targetPage === "about") {
       navigateTo("#/about");
@@ -837,6 +885,10 @@ function App() {
     if (window.location.hash.startsWith("#/about")) {
       navigateTo("#/");
     }
+  };
+
+  const handleLocationClick = () => {
+    setLocationCardOpen((current) => !current);
   };
 
   return (
@@ -849,6 +901,11 @@ function App() {
       />
 
       <LeadModal open={leadModalOpen} onClose={() => setLeadModalOpen(false)} />
+      <FloatingLocationButton onClick={handleLocationClick} />
+      <FloatingLocationCard
+        open={locationCardOpen}
+        onClose={() => setLocationCardOpen(false)}
+      />
 
       {page === "about" ? <AboutPage /> : <HomePage />}
       <Footer />

@@ -48,6 +48,91 @@ a {
   padding: 28px 0 64px;
 }
 
+.floating-location-btn {
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  z-index: 1000;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(201, 163, 62, 0.4);
+  border-radius: 50%;
+  background:
+    linear-gradient(145deg, rgba(38, 21, 13, 0.98), rgba(96, 64, 19, 0.95)),
+    var(--heading-brown);
+  color: #f8ecd2;
+  box-shadow: 0 18px 38px rgba(59, 38, 8, 0.2);
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.floating-location-btn:hover {
+  transform: translateY(calc(-50% - 4px)) scale(1.04);
+  box-shadow: 0 24px 44px rgba(59, 38, 8, 0.26);
+}
+
+.floating-location-btn:focus-visible {
+  outline: 3px solid rgba(201, 163, 62, 0.28);
+  outline-offset: 4px;
+}
+
+.floating-location-btn svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+.floating-location-card {
+  position: fixed;
+  right: 18px;
+  bottom: 100px;
+  z-index: 999;
+  width: min(320px, calc(100vw - 32px));
+  padding: 28px 24px 24px;
+  border: 1px solid rgba(201, 163, 62, 0.22);
+  border-radius: 0 24px 24px 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 245, 0.96), rgba(229, 216, 187, 0.92)),
+    var(--panel);
+  box-shadow: 0 24px 50px rgba(86, 63, 26, 0.22);
+  backdrop-filter: blur(10px);
+}
+
+.floating-location-card .section-kicker {
+  margin-bottom: 12px;
+  font-size: 0.86rem;
+  letter-spacing: 0.22em;
+}
+
+.floating-location-address {
+  margin: 0;
+  color: #43311d;
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+  line-height: 1.2;
+  font-family: "Manrope", sans-serif;
+}
+
+.floating-location-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(201, 163, 62, 0.14);
+  color: var(--heading-brown);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
 .full-bleed-shell {
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -1216,11 +1301,13 @@ a {
   padding: 24px;
   background: rgba(34, 21, 6, 0.45);
   backdrop-filter: blur(8px);
+  animation: modalBackdropIn 0.35s ease both;
 }
 
 .lead-modal {
   position: relative;
   width: min(100%, 520px);
+  animation: modalCardIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 .lead-modal-close {
@@ -1248,6 +1335,10 @@ a {
 .full-width {
   width: 100%;
   margin-top: 18px;
+}
+
+.visit-card .btn + .btn {
+  margin-top: 12px;
 }
 
 .site-footer {
@@ -1367,6 +1458,26 @@ a {
   }
 }
 
+@keyframes modalBackdropIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes fadeRise {
   from {
     opacity: 0;
@@ -1469,6 +1580,24 @@ a {
   .page-shell {
     width: min(100% - 28px, 1240px);
     padding-top: 16px;
+  }
+
+  .floating-location-btn {
+    right: 12px;
+    top: 50%;
+    bottom: auto;
+    width: 58px;
+    height: 58px;
+  }
+
+  .floating-location-card {
+    right: 12px;
+    bottom: 88px;
+    padding: 24px 20px 20px;
+  }
+
+  .floating-location-address {
+    font-size: 1.05rem;
   }
 
   .section-inner {
