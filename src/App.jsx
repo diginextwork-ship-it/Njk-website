@@ -200,23 +200,7 @@ const craftSteps = [
   { icon: "✧", step: "04", label: "Polish", text: "Final finishing brings warmth, lustre, and heirloom presence." },
 ];
 
-const testimonialItems = [
-  {
-    quote:
-      "We came for bridal jewellery and left with complete peace of mind. The guidance felt personal, patient, and deeply trustworthy.",
-    name: "The Agrawal Family",
-  },
-  {
-    quote:
-      "Their collection feels classic rather than flashy. Every visit has the warmth of a family jeweller who understands the moment.",
-    name: "Mrs. Shalini S.",
-  },
-  {
-    quote:
-      "For gifting and wedding shopping alike, this is where our family returns. The experience is respectful, calm, and beautifully curated.",
-    name: "The Jain Family",
-  },
-];
+const testimonialItems = [];
 
 const signatureCollections = [
   {
@@ -385,6 +369,39 @@ function TestimonialsSection() {
             <strong>{item.name}</strong>
           </article>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function GoogleReviewsSection() {
+  useEffect(() => {
+    const existingScript = document.querySelector(
+      'script[src="https://elfsightcdn.com/platform.js"]'
+    );
+
+    if (existingScript) {
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://elfsightcdn.com/platform.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
+  return (
+    <section className="testimonials-section">
+      <div className="testimonials-heading reveal-on-scroll">
+        <p className="section-kicker">Words From Our Patrons</p>
+        <h3>Trusted by families across generations.</h3>
+      </div>
+
+      <div className="reviews-widget-shell reveal-on-scroll">
+        <div
+          className="elfsight-app-efebd529-c950-4a90-8230-3591a206ec19"
+          data-elfsight-app-lazy
+        />
       </div>
     </section>
   );
@@ -1047,7 +1064,7 @@ function HomePage() {
       </section>
 
       <SectionDivider />
-      <TestimonialsSection />
+      <GoogleReviewsSection />
       <SectionDivider />
 
       <section className="highlights fade-rise delay-5">

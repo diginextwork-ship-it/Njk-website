@@ -1210,50 +1210,18 @@ a {
   padding: 16px 0 8px;
 }
 
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.testimonial-card {
-  position: relative;
-  padding: 28px 24px;
-  border-radius: 28px;
+.reviews-widget-shell {
+  padding: 20px;
+  border-radius: 30px;
   border: 1px solid rgba(201, 168, 76, 0.22);
-  background: rgba(255, 252, 245, 0.88);
+  background:
+    linear-gradient(145deg, rgba(255, 252, 245, 0.92), rgba(245, 235, 208, 0.86)),
+    var(--panel);
   box-shadow: var(--shadow);
 }
 
-.testimonial-mark {
-  display: block;
-  margin-bottom: 10px;
-  color: var(--gold);
-  font-family: "Cormorant Garamond", serif;
-  font-size: 4rem;
-  line-height: 0.8;
-}
-
-.testimonial-card p {
-  margin: 0 0 16px;
-  color: var(--muted);
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.2rem;
-  font-style: italic;
-  line-height: 1.6;
-}
-
-.testimonial-stars {
-  margin-bottom: 12px;
-  color: var(--gold);
-  letter-spacing: 0.2em;
-}
-
-.testimonial-card strong {
-  color: var(--heading-brown);
-  font-size: 0.8rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+.reviews-widget-shell > div {
+  min-height: 160px;
 }
 
 .collection-gallery {
