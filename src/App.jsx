@@ -29,7 +29,7 @@ const storyPoints = [
   },
   {
     title: "Personal Guidance",
-    text: "Owner Hemant Soni and the team help customers choose pieces for bridal, festive, gifting, and daily wear.",
+    text: "Owner Mr. Hemant Soni and the team help customers choose pieces for bridal, festive, gifting, and daily wear.",
   },
   {
     title: "Craftsmanship And Trust",
@@ -444,17 +444,17 @@ function FounderSpotlight() {
 
       <div className="founder-copy">
         <p className="section-kicker">Master Craftsman</p>
-        <h3>Hemant Soni</h3>
+        <h3>Mr. Hemant Soni</h3>
         <p className="founder-role">Master Goldsmith - 3rd Generation</p>
         <p className="founder-bio">
-          Hemant Soni continues a family legacy rooted in trust, measured taste,
+          Mr. Hemant Soni continues a family legacy rooted in trust, measured taste,
           and personal guidance. His approach is not simply to present jewellery,
           but to help families choose pieces that suit the meaning of the
           occasion. With a close eye for classic silhouettes, bridal richness,
           and lasting value, he has helped preserve the welcoming character that
           defines New J.K. Jewellers.
         </p>
-        <div className="founder-signature">Hemant Soni</div>
+        <div className="founder-signature">Mr. Hemant Soni</div>
       </div>
     </section>
   );
@@ -717,14 +717,14 @@ function AboutPage() {
           <p className="lead">
             New J.K. Jewellers has served families since 1962 with a showroom
             experience built on dependable service, classic taste, and warm
-            personal attention under the guidance of Hemant Soni.
+            personal attention under the guidance of Mr. Hemant Soni.
           </p>
           <div className="hero-actions">
             <a className="btn btn-solid" href="#visit">
               Visit The Showroom
             </a>
             <a className="btn btn-outline" href="tel:+919826237997">
-              Call Hemant Soni
+              Call Now
             </a>
           </div>
         </div>
@@ -800,7 +800,7 @@ function AboutPage() {
             <p className="about-lead">
               New J.K. Jewellers is a long-standing jewellery showroom serving
               the local community since <strong>1962</strong>. Under the
-              guidance of owner <strong>Hemant Soni</strong>, the showroom is
+              guidance of owner <strong>Mr. Hemant Soni</strong>, the showroom is
               known for a dependable approach, respectful service, and jewellery
               curated for everyday elegance and cherished family occasions
               alike.
@@ -878,7 +878,7 @@ function AboutPage() {
         <div className="visit-card">
           <p>Mon - Sun</p>
           <strong>10:30 AM - 8:30 PM</strong>
-          <p>Owner: Hemant Soni</p>
+          <p>Owner: Mr. Hemant Soni</p>
           <p>{address}</p>
           <a className="btn btn-solid full-width" href="tel:+919826237997">
             Call For Appointment
@@ -902,7 +902,7 @@ function HomePage() {
             New J.K. Jewellers has been serving customers since 1962 with
             carefully selected bridal, festive, traditional, and everyday
             jewellery pieces in a welcoming showroom experience led by owner
-            Hemant Soni.
+            Mr. Hemant Soni.
           </p>
           <div className="hero-stats">
             <div>
@@ -1099,7 +1099,7 @@ function HomePage() {
         <div className="visit-card">
           <p>Mon - Sun</p>
           <strong>10:30 AM - 8:30 PM</strong>
-          <p>Owner: Hemant Soni</p>
+          <p>Owner: Mr. Hemant Soni</p>
           <p>{address}</p>
           <a
             className="btn btn-outline full-width"
@@ -1158,13 +1158,13 @@ function Footer() {
             <p>
               A traditional jewellery destination at Panna Naka, known for
               elegant designs, reliable service, and a personal shopping
-              experience guided by Hemant Soni.
+              experience guided by Mr. Hemant Soni.
             </p>
           </div>
 
           <div className="footer-contact">
             <h4>Contact</h4>
-            <p>Owner: Hemant Soni</p>
+            <p>Owner: Mr. Hemant Soni</p>
             <p>
               Phone: <a href="tel:+919826237997">+91 98262 37997</a>
             </p>
