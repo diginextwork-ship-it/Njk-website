@@ -1,5 +1,39 @@
 import React, { useEffect, useState } from "react";
 
+const googleFormAction = import.meta.env.VITE_GOOGLE_FORM_ACTION?.trim();
+const googleFormNameEntry = import.meta.env.VITE_GOOGLE_FORM_NAME_ENTRY?.trim();
+const googleFormPhoneEntry = import.meta.env.VITE_GOOGLE_FORM_PHONE_ENTRY?.trim();
+const googleFormSourceEntry = import.meta.env.VITE_GOOGLE_FORM_SOURCE_ENTRY?.trim();
+const whatsappUrl =
+  "https://wa.me/919826237997?text=Hello%20New%20J.K.%20Jewellers%2C%20I%20want%20to%20make%20an%20enquiry.";
+
+const hasGoogleFormConfig = Boolean(
+  googleFormAction && googleFormNameEntry && googleFormPhoneEntry,
+);
+
+async function submitLeadToGoogleForm({ name, phone, source }) {
+  if (!hasGoogleFormConfig) {
+    throw new Error("Google Form not configured");
+  }
+
+  const payload = new URLSearchParams();
+  payload.append(googleFormNameEntry, name);
+  payload.append(googleFormPhoneEntry, phone);
+
+  if (googleFormSourceEntry) {
+    payload.append(googleFormSourceEntry, source);
+  }
+
+  await fetch(googleFormAction, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+    },
+    body: payload.toString(),
+  });
+}
+
 const topStripItems = [
   "Necklaces",
   "Earrings",
@@ -500,6 +534,22 @@ function FloatingLocationButton({ onClick }) {
   );
 }
 
+function FloatingWhatsappButton() {
+  return (
+    <a
+      className="floating-whatsapp-btn"
+      href={whatsappUrl}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Open WhatsApp enquiry"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20.52 3.48A11.83 11.83 0 0 0 12.09.02C5.58.02.27 5.33.27 11.84c0 2.09.55 4.13 1.6 5.92L0 24l6.43-1.83a11.8 11.8 0 0 0 5.66 1.45h.01c6.51 0 11.82-5.31 11.82-11.82 0-3.16-1.23-6.12-3.4-8.32ZM12.1 21.62h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.82 1.09 1.12-3.72-.23-.38a9.82 9.82 0 0 1-1.51-5.19c0-5.42 4.41-9.83 9.84-9.83 2.62 0 5.09 1.02 6.93 2.88a9.72 9.72 0 0 1 2.87 6.94c0 5.42-4.41 9.83-9.83 9.83Zm5.39-7.36c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.66.15-.2.3-.76.98-.93 1.18-.17.2-.34.22-.64.08-.3-.15-1.24-.46-2.37-1.47-.87-.78-1.46-1.74-1.63-2.03-.17-.3-.02-.45.13-.6.13-.13.3-.34.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.66-.5h-.56c-.2 0-.52.08-.8.37-.27.3-1.05 1.03-1.05 2.52 0 1.48 1.08 2.91 1.23 3.12.15.2 2.1 3.2 5.08 4.48.71.31 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.08 1.78-.73 2.03-1.44.25-.71.25-1.31.17-1.44-.07-.12-.27-.2-.57-.34Z" />
+      </svg>
+    </a>
+  );
+}
+
 function FloatingLocationCard({ open, onClose }) {
   if (!open) {
     return null;
@@ -576,6 +626,8 @@ function Header({ page, menuOpen, onMenuToggle, onNavigate }) {
 
 function LeadModal({ open, onClose }) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   if (!open) {
     return null;
@@ -619,9 +671,25 @@ function LeadModal({ open, onClose }) {
             </p>
             <form
               className="contact-form"
-              onSubmit={(event) => {
+              onSubmit={async (event) => {
                 event.preventDefault();
-                setSubmitted(true);
+                setError("");
+                setSubmitting(true);
+
+                const formData = new FormData(event.currentTarget);
+
+                try {
+                  await submitLeadToGoogleForm({
+                    name: formData.get("name")?.toString().trim() ?? "",
+                    phone: formData.get("phone")?.toString().trim() ?? "",
+                    source: "Lead Modal",
+                  });
+                  setSubmitted(true);
+                } catch (submitError) {
+                  setError("Form not linked. Add Google Form env.");
+                } finally {
+                  setSubmitting(false);
+                }
               }}
             >
               <label>
@@ -637,8 +705,13 @@ function LeadModal({ open, onClose }) {
                   required
                 />
               </label>
-              <button type="submit" className="btn btn-solid full-width">
-                Request A Call
+              {error ? <p className="form-error">{error}</p> : null}
+              <button
+                type="submit"
+                className="btn btn-solid full-width"
+                disabled={submitting}
+              >
+                {submitting ? "Sending..." : "Request A Call"}
               </button>
             </form>
           </>
@@ -650,6 +723,8 @@ function LeadModal({ open, onClose }) {
 
 function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   return (
     <section className="contact-section fade-rise delay-6" id="contact">
@@ -671,9 +746,25 @@ function ContactSection() {
         ) : (
           <form
             className="contact-form"
-            onSubmit={(event) => {
+            onSubmit={async (event) => {
               event.preventDefault();
-              setSubmitted(true);
+              setError("");
+              setSubmitting(true);
+
+              const formData = new FormData(event.currentTarget);
+
+              try {
+                await submitLeadToGoogleForm({
+                  name: formData.get("name")?.toString().trim() ?? "",
+                  phone: formData.get("phone")?.toString().trim() ?? "",
+                  source: "Contact Section",
+                });
+                setSubmitted(true);
+              } catch (submitError) {
+                setError("Form not linked. Add Google Form env.");
+              } finally {
+                setSubmitting(false);
+              }
             }}
           >
             <label>
@@ -689,16 +780,13 @@ function ContactSection() {
                 required
               />
             </label>
-            <label>
-              <span>Message</span>
-              <textarea
-                name="message"
-                rows="4"
-                placeholder="Tell us what kind of jewellery you want to see"
-              />
-            </label>
-            <button type="submit" className="btn btn-solid full-width">
-              Submit Enquiry
+            {error ? <p className="form-error">{error}</p> : null}
+            <button
+              type="submit"
+              className="btn btn-solid full-width"
+              disabled={submitting}
+            >
+              {submitting ? "Sending..." : "Submit Enquiry"}
             </button>
           </form>
         )}
@@ -1270,7 +1358,10 @@ function App() {
       />
 
       <LeadModal open={leadModalOpen} onClose={() => setLeadModalOpen(false)} />
-      <FloatingLocationButton onClick={handleLocationClick} />
+      <div className="floating-action-stack">
+        <FloatingWhatsappButton />
+        <FloatingLocationButton onClick={handleLocationClick} />
+      </div>
       <FloatingLocationCard
         open={locationCardOpen}
         onClose={() => setLocationCardOpen(false)}

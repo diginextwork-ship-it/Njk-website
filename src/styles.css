@@ -52,13 +52,19 @@ a {
   padding: 28px 0 64px;
 }
 
-.floating-location-btn {
+.floating-action-stack {
   position: fixed;
   right: 18px;
   top: 50%;
-  bottom: auto;
   transform: translateY(-50%);
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.floating-location-btn,
+.floating-whatsapp-btn {
   width: 64px;
   height: 64px;
   display: grid;
@@ -77,17 +83,25 @@ a {
     background 0.25s ease;
 }
 
-.floating-location-btn:hover {
-  transform: translateY(calc(-50% - 4px)) scale(1.04);
+.floating-whatsapp-btn {
+  background: linear-gradient(145deg, #1faa59, #118843);
+  color: #f6fff8;
+}
+
+.floating-location-btn:hover,
+.floating-whatsapp-btn:hover {
+  transform: translateY(-4px) scale(1.04);
   box-shadow: 0 24px 44px rgba(59, 38, 8, 0.26);
 }
 
-.floating-location-btn:focus-visible {
+.floating-location-btn:focus-visible,
+.floating-whatsapp-btn:focus-visible {
   outline: 3px solid rgba(201, 163, 62, 0.28);
   outline-offset: 4px;
 }
 
-.floating-location-btn svg {
+.floating-location-btn svg,
+.floating-whatsapp-btn svg {
   width: 28px;
   height: 28px;
   fill: currentColor;
@@ -1554,8 +1568,7 @@ a {
   color: var(--gold-deep);
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact-form input {
   width: 100%;
   padding: 15px 16px;
   border-radius: 18px;
@@ -1566,15 +1579,20 @@ a {
   outline: none;
 }
 
-.contact-form textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
+.contact-form input:focus {
   border-color: var(--gold);
   box-shadow: 0 0 0 3px rgba(201, 163, 62, 0.12);
+}
+
+.contact-form button:disabled {
+  opacity: 0.72;
+  cursor: wait;
+}
+
+.form-error {
+  margin: 0;
+  color: #9b3d2f;
+  font-size: 0.95rem;
 }
 
 .contact-success p,
@@ -2100,10 +2118,13 @@ a {
     padding-top: 16px;
   }
 
-  .floating-location-btn {
+  .floating-action-stack {
     right: 12px;
     top: 50%;
-    bottom: auto;
+  }
+
+  .floating-location-btn,
+  .floating-whatsapp-btn {
     width: 58px;
     height: 58px;
   }
