@@ -42,7 +42,7 @@ const topStripItems = [
   "Pendants",
   "Chains",
   "Temple Jewellery",
-  "Diamond Edit",
+  "Everyday Gold",
 ];
 
 const bottomStripItems = [
@@ -113,12 +113,6 @@ const showcaseItems = [
     description: "Rich festive jewellery with warm gold detailing.",
     src: "/necklace/neck8.jpeg",
     alt: "Festive gold jewellery set",
-  },
-  {
-    title: "Diamond Edit",
-    description: "Refined sparkle for evening and occasion wear.",
-    src: "/necklace/earings2.jpeg",
-    alt: "Diamond-style earrings",
   },
   {
     title: "Temple Classics",
@@ -487,7 +481,7 @@ const pressMentions = [
 ];
 
 const address =
-  "Panna Naka, in front of Parmar Hospital, beside Jain Chhole Bhature.";
+  "Panna Naka, Chattarpur, in front of Parmar Hospital, beside Jain Chhole Bhature.";
 const mapUrl =
   "https://www.google.com/maps/place/New+J.K+Jewellers/@24.8974852,79.5924215,17z/data=!3m1!4b1!4m6!3m5!1s0x398297e87ee859e1:0xb3bdde3c609c6bec!8m2!3d24.8974852!4d79.5924215!16s%2Fg%2F11cmpf117k?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D";
 
@@ -1184,11 +1178,11 @@ function AboutPage() {
               alike.
             </p>
             <p className="about-body">
-              Located at <strong>Panna Naka</strong>, in front of Parmar
-              Hospital, beside Jain Chhole Bhature, the store is a familiar and
-              trusted destination where customers explore necklaces, earrings,
-              rings, bridal styles, festive sets, and timeless traditional
-              pieces.
+              Located at <strong>Panna Naka, Chattarpur</strong>, in front of
+              Parmar Hospital, beside Jain Chhole Bhature, the store is a
+              familiar and trusted destination where customers explore
+              necklaces, earrings, rings, bridal styles, festive sets, and
+              timeless traditional pieces.
             </p>
             <div className="about-traditional-card story-image">
               <img
@@ -1255,7 +1249,7 @@ function AboutPage() {
 
         <div className="visit-card">
           <p>Mon - Sun</p>
-          <strong>10:30 AM - 8:30 PM</strong>
+          <strong>11 AM - 8 PM</strong>
           <p>Owner: Mr. Hemant Soni</p>
           <p>{address}</p>
           <a className="btn btn-solid full-width" href="tel:+919826237997">
@@ -1368,7 +1362,7 @@ function HomePage() {
               <span>Owner Guidance</span>
             </div>
             <div>
-              <strong>Panna Naka</strong>
+              <strong>Panna Naka, Chattarpur</strong>
               <span>Easy To Visit</span>
             </div>
           </div>
@@ -1418,8 +1412,10 @@ function HomePage() {
         <div className="showcase-grid">
           {showcaseItems.map((item, index) => (
             <article key={item.title} className={`showcase-tile tile-${index + 1}`}>
-              <img src={item.src} alt={item.alt} className="media-image" />
-              <div className="tile-badge">0{index + 1}</div>
+              <div className="showcase-image-wrap">
+                <img src={item.src} alt={item.alt} className="media-image" />
+                <div className="tile-badge">0{index + 1}</div>
+              </div>
               <div className="tile-copy">
                 <span>{item.title}</span>
                 <p>{item.description}</p>
@@ -1552,7 +1548,7 @@ function HomePage() {
 
         <div className="visit-card">
           <p>Mon - Sun</p>
-          <strong>10:30 AM - 8:30 PM</strong>
+          <strong>11 AM - 8 PM</strong>
           <p>Owner: Mr. Hemant Soni</p>
           <p>{address}</p>
           <a
@@ -1610,9 +1606,9 @@ function Footer() {
             <p className="section-kicker footer-kicker">New J.K. Jewellers</p>
             <h3>Trusted jewellery heritage since 1962.</h3>
             <p>
-              A traditional jewellery destination at Panna Naka, known for
-              elegant designs, reliable service, and a personal shopping
-              experience guided by Mr. Hemant Soni.
+              A traditional jewellery destination at Panna Naka, Chattarpur,
+              known for elegant designs, reliable service, and a personal
+              shopping experience guided by Mr. Hemant Soni.
             </p>
           </div>
 
@@ -1629,7 +1625,7 @@ function Footer() {
             <h4>Find Us</h4>
             <div className="map-wrap">
               <iframe
-                src="https://www.google.com/maps?q=New%20J.K.%20Jewellers%2C%20Panna%20Naka%2C%20Chhatarpur%2C%20Madhya%20Pradesh&z=16&output=embed"
+                src="https://www.google.com/maps?q=New%20J.K.%20Jewellers%2C%20Panna%20Naka%2C%20Chattarpur%2C%20Madhya%20Pradesh&z=16&output=embed"
                 width="600"
                 height="450"
                 style={{ border: 0 }}
@@ -1643,7 +1639,7 @@ function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>New J.K. Jewellers, Panna Naka</p>
+          <p>New J.K. Jewellers, Panna Naka, Chattarpur</p>
           <p>Royal craftsmanship, trusted service, and timeless jewellery.</p>
         </div>
       </div>
