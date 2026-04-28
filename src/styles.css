@@ -198,15 +198,17 @@ a {
 }
 
 .brand-logo {
-  width: 72px;
-  height: 72px;
+  width: clamp(48px, 8vw, 72px);
+  height: auto;
+  display: block;
   object-fit: contain;
   flex-shrink: 0;
-  background: rgba(255, 252, 245, 0.8);
-  border: 1px solid var(--gold-soft);
-  border-radius: 22px;
-  padding: 10px;
-  box-shadow: inset 0 0 0 4px rgba(201, 163, 62, 0.08);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  mix-blend-mode: multiply;
 }
 
 .eyebrow,
@@ -2013,15 +2015,17 @@ a {
 }
 
 .footer-logo {
-  width: 92px;
-  height: 92px;
+  width: clamp(56px, 9vw, 92px);
+  height: auto;
   object-fit: contain;
   display: block;
   margin-bottom: 18px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(241, 207, 114, 0.24);
-  border-radius: 26px;
-  padding: 12px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  mix-blend-mode: screen;
 }
 
 .footer-contact {
@@ -2538,10 +2542,7 @@ a {
   }
 
   .brand-logo {
-    width: 58px;
-    height: 58px;
-    border-radius: 18px;
-    padding: 8px;
+    width: 44px;
   }
 
   .about-page-copy h2,
