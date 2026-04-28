@@ -191,6 +191,117 @@ const galleryItems = [
   },
 ];
 
+const collectionCategories = [
+  { id: "earrings", label: "Earrings", message: "earings" },
+  { id: "necklace", label: "Necklace", message: "necklace" },
+  { id: "rings", label: "Rings", message: "rings" },
+];
+
+const collectionItems = [
+  {
+    src: "/earrings/earings1.jpeg",
+    alt: "Royal earrings design",
+    category: "earrings",
+    title: "Royal Earrings",
+  },
+  {
+    src: "/earrings/earings2.jpeg",
+    alt: "Diamond-style earrings",
+    category: "earrings",
+    title: "Diamond Earrings",
+  },
+  {
+    src: "/earrings/earings3.jpeg",
+    alt: "Traditional earrings pair",
+    category: "earrings",
+    title: "Classic Earrings",
+  },
+  {
+    src: "/earrings/earings4.jpeg",
+    alt: "Decorative earring detail",
+    category: "earrings",
+    title: "Festive Earrings",
+  },
+  {
+    src: "/necklace/neck_1.jpeg",
+    alt: "Detailed necklace close-up",
+    category: "necklace",
+    title: "Signature Necklace",
+  },
+  {
+    src: "/necklace/neck2.jpeg",
+    alt: "Gold necklace set 1",
+    category: "necklace",
+    title: "Ceremonial Necklace",
+  },
+  {
+    src: "/necklace/neck3.jpeg",
+    alt: "Gold necklace set 2",
+    category: "necklace",
+    title: "Soft Heritage Necklace",
+  },
+  {
+    src: "/necklace/neck4.jpeg",
+    alt: "Gold necklace set 3",
+    category: "necklace",
+    title: "Traditional Necklace",
+  },
+  {
+    src: "/necklace/neck5.jpeg",
+    alt: "Temple classic necklace design",
+    category: "necklace",
+    title: "Temple Necklace",
+  },
+  {
+    src: "/necklace/neck6.jpeg",
+    alt: "Gold necklace set 4",
+    category: "necklace",
+    title: "Bridal Necklace",
+  },
+  {
+    src: "/necklace/neck7.jpeg",
+    alt: "Gold necklace set 5",
+    category: "necklace",
+    title: "Festive Necklace",
+  },
+  {
+    src: "/necklace/neck8.jpeg",
+    alt: "Festive gold jewellery set",
+    category: "necklace",
+    title: "Gold Necklace",
+  },
+  {
+    src: "/necklace/neck9.jpeg",
+    alt: "Gold necklace set 6",
+    category: "necklace",
+    title: "Showroom Necklace",
+  },
+  {
+    src: "/necklace/neck10.jpeg",
+    alt: "Bridal grandeur necklace set",
+    category: "necklace",
+    title: "Grand Bridal Necklace",
+  },
+  {
+    src: "/necklace/neck11.jpeg",
+    alt: "Bridal gold necklace set",
+    category: "necklace",
+    title: "Royal Bridal Necklace",
+  },
+  {
+    src: "/rings/rings.jpeg",
+    alt: "Gold ring collection",
+    category: "rings",
+    title: "Gold Rings",
+  },
+  {
+    src: "/rings/rings2.jpeg",
+    alt: "Ring display in showroom",
+    category: "rings",
+    title: "Signature Rings",
+  },
+];
+
 const trustBadges = [
   { icon: "◆", label: "BIS Hallmarked" },
   { icon: "✦", label: "IGI Certified Stones" },
@@ -265,7 +376,15 @@ const mapUrl =
   "https://www.google.com/maps/place/New+J.K+Jewellers/@24.8974852,79.5924215,17z/data=!3m1!4b1!4m6!3m5!1s0x398297e87ee859e1:0xb3bdde3c609c6bec!8m2!3d24.8974852!4d79.5924215!16s%2Fg%2F11cmpf117k?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D";
 
 function getCurrentPage() {
-  return window.location.hash.startsWith("#/about") ? "about" : "home";
+  if (window.location.hash.startsWith("#/about")) {
+    return "about";
+  }
+
+  if (window.location.hash.startsWith("#/collections")) {
+    return "collections";
+  }
+
+  return "home";
 }
 
 function navigateTo(target) {
@@ -575,9 +694,8 @@ function FloatingLocationCard({ open, onClose }) {
 }
 
 function Header({ page, menuOpen, onMenuToggle, onNavigate }) {
-  const collectionsHref = page === "about" ? "#/" : "#collections";
-  const visitHref = page === "about" ? "#/" : "#visit";
-  const contactHref = page === "about" ? "#/" : "#contact";
+  const visitHref = page === "about" || page === "collections" ? "#/" : "#visit";
+  const contactHref = page === "about" || page === "collections" ? "#/" : "#contact";
 
   return (
     <header className="topbar fade-rise">
@@ -602,7 +720,7 @@ function Header({ page, menuOpen, onMenuToggle, onNavigate }) {
       </button>
 
       <nav className={`topnav${menuOpen ? " is-open" : ""}`}>
-        <a href={collectionsHref} onClick={() => onNavigate("home")}>
+        <a href="#/collections" onClick={() => onNavigate("collections")}>
           Collections
         </a>
         <a href="#/about" onClick={() => onNavigate("about")}>
@@ -614,7 +732,7 @@ function Header({ page, menuOpen, onMenuToggle, onNavigate }) {
         <a href={contactHref} onClick={() => onNavigate("home")}>
           Contact
         </a>
-        {page === "about" ? (
+        {page === "about" || page === "collections" ? (
           <a className="nav-pill" href="#/" onClick={() => onNavigate("home")}>
             Back Home
           </a>
@@ -979,6 +1097,79 @@ function AboutPage() {
   );
 }
 
+function CollectionPage() {
+  const [activeCategory, setActiveCategory] = useState("necklace");
+
+  const filteredItems = collectionItems.filter((item) => item.category === activeCategory);
+  const activeCollection =
+    collectionCategories.find((item) => item.id === activeCategory) ?? collectionCategories[1];
+
+  return (
+    <main>
+      <section className="collections-page-hero fade-rise">
+        <div className="collections-page-copy">
+          <p className="section-kicker">All Collections</p>
+          <h2>All jewellery images in one place.</h2>
+          <p className="lead">
+            Pick a category on top and view only that collection. Each image has
+            a quick WhatsApp enquiry button.
+          </p>
+        </div>
+      </section>
+
+      <section className="collections-browser fade-rise delay-1">
+        <div className="collections-browser-top">
+          <div className="collections-heading">
+            <p className="section-kicker">Shop By Category</p>
+            <h3>Choose earrings, necklace, or rings.</h3>
+          </div>
+
+          <div className="collections-tabs" role="tablist" aria-label="Jewellery categories">
+            {collectionCategories.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                role="tab"
+                aria-selected={activeCategory === item.id}
+                className={`collections-tab${activeCategory === item.id ? " is-active" : ""}`}
+                onClick={() => setActiveCategory(item.id)}
+              >
+                <span>{item.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div key={activeCategory} className="collections-grid" aria-live="polite">
+          {filteredItems.map((item, index) => (
+            <article
+              key={item.src}
+              className="collection-product-card"
+              style={{ "--card-delay": `${index * 70}ms` }}
+            >
+              <div className="collection-product-media">
+                <img src={item.src} alt={item.alt} className="collection-product-image" />
+              </div>
+              <div className="collection-product-body">
+                <span className="collection-product-tag">{activeCollection.label}</span>
+                <h4>{item.title}</h4>
+                <a
+                  className="btn btn-solid full-width"
+                  href={`https://wa.me/919826237997?text=${encodeURIComponent(`Intrested in ${activeCollection.message}`)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Enquire Now
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+
 function HomePage() {
   return (
     <main>
@@ -1339,7 +1530,15 @@ function App() {
       return;
     }
 
-    if (window.location.hash.startsWith("#/about")) {
+    if (targetPage === "collections") {
+      navigateTo("#/collections");
+      return;
+    }
+
+    if (
+      window.location.hash.startsWith("#/about") ||
+      window.location.hash.startsWith("#/collections")
+    ) {
       navigateTo("#/");
     }
   };
@@ -1367,7 +1566,7 @@ function App() {
         onClose={() => setLocationCardOpen(false)}
       />
 
-      {page === "about" ? <AboutPage /> : <HomePage />}
+      {page === "about" ? <AboutPage /> : page === "collections" ? <CollectionPage /> : <HomePage />}
       <Footer />
     </div>
   );
