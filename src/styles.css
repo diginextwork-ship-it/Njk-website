@@ -1797,12 +1797,25 @@ a {
   min-height: 420px;
   display: grid;
   place-items: center;
+  align-content: center;
+  gap: 14px;
+  padding: 18px;
+  overflow: hidden;
   border-radius: 32px;
   border: 1px solid rgba(201, 168, 76, 0.28);
   background:
     radial-gradient(circle at top, rgba(255, 251, 240, 0.92), transparent 54%),
     linear-gradient(160deg, rgba(245, 233, 200, 0.96), rgba(225, 204, 154, 0.9));
   text-align: center;
+}
+
+.founder-photo {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 26px;
+  box-shadow: 0 22px 46px rgba(58, 36, 4, 0.18);
 }
 
 .founder-monogram {

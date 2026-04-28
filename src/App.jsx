@@ -96,6 +96,11 @@ const traditionalImage = {
   alt: "Traditional jewellery display from New J.K. Jewellers",
 };
 
+const ownerImage = {
+  src: "/owner_pic.png",
+  alt: "Mr. Hemant Soni, owner of New J.K. Jewellers",
+};
+
 const showcaseItems = [
   {
     title: "Bridal Grandeur",
@@ -487,19 +492,44 @@ const mapUrl =
   "https://www.google.com/maps/place/New+J.K+Jewellers/@24.8974852,79.5924215,17z/data=!3m1!4b1!4m6!3m5!1s0x398297e87ee859e1:0xb3bdde3c609c6bec!8m2!3d24.8974852!4d79.5924215!16s%2Fg%2F11cmpf117k?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D";
 
 function getCurrentPage() {
-  if (window.location.hash.startsWith("#/about")) {
+  const params = new URLSearchParams(window.location.search);
+  const page = params.get("page");
+
+  if (page === "about") {
     return "about";
   }
 
-  if (window.location.hash.startsWith("#/collections")) {
+  if (page === "collections") {
     return "collections";
   }
 
   return "home";
 }
 
-function navigateTo(target) {
-  window.location.hash = target;
+function getCurrentSection() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("section") ?? "";
+}
+
+function buildInternalHref({ page = "home", section = "" } = {}) {
+  const params = new URLSearchParams();
+
+  if (page !== "home") {
+    params.set("page", page);
+  }
+
+  if (page === "home" && section) {
+    params.set("section", section);
+  }
+
+  const query = params.toString();
+  return query ? `?${query}` : window.location.pathname;
+}
+
+function navigateTo({ page = "home", section = "" } = {}, { replace = false } = {}) {
+  const targetUrl = buildInternalHref({ page, section });
+  window.history[replace ? "replaceState" : "pushState"]({}, "", targetUrl);
+  window.dispatchEvent(new Event("routechange"));
 }
 
 function MarqueeStrip({ items, reverse = false }) {
@@ -517,7 +547,7 @@ function MarqueeStrip({ items, reverse = false }) {
 }
 
 function BrandLogo({ className = "brand-logo", alt = "NJK Jewellers logo" }) {
-  return <img className={className} src="/njk_logo.svg" alt={alt} />;
+  return <img className={className} src="/NJKLOGO(BLACK).svg" alt={alt} />;
 }
 
 function SectionDivider() {
@@ -702,7 +732,7 @@ function FounderSpotlight() {
   return (
     <section className="founder-spotlight reveal-on-scroll">
       <div className="founder-portrait">
-        <div className="founder-monogram">HS</div>
+        <img src={ownerImage.src} alt={ownerImage.alt} className="founder-photo" />
         <p>Family Steward</p>
       </div>
 
@@ -805,8 +835,8 @@ function FloatingLocationCard({ open, onClose }) {
 }
 
 function Header({ page, menuOpen, onMenuToggle, onNavigate }) {
-  const visitHref = page === "about" || page === "collections" ? "#/" : "#visit";
-  const contactHref = page === "about" || page === "collections" ? "#/" : "#contact";
+  const visitHref = buildInternalHref({ page: "home", section: "visit" });
+  const contactHref = buildInternalHref({ page: "home", section: "contact" });
 
   return (
     <header className="topbar fade-rise">
@@ -831,20 +861,51 @@ function Header({ page, menuOpen, onMenuToggle, onNavigate }) {
       </button>
 
       <nav className={`topnav${menuOpen ? " is-open" : ""}`}>
-        <a href="#/collections" onClick={() => onNavigate("collections")}>
+        <a
+          href={buildInternalHref({ page: "collections" })}
+          onClick={(event) => {
+            event.preventDefault();
+            onNavigate("collections");
+          }}
+        >
           Collections
         </a>
-        <a href="#/about" onClick={() => onNavigate("about")}>
+        <a
+          href={buildInternalHref({ page: "about" })}
+          onClick={(event) => {
+            event.preventDefault();
+            onNavigate("about");
+          }}
+        >
           About Us
         </a>
-        <a href={visitHref} onClick={() => onNavigate("home")}>
+        <a
+          href={visitHref}
+          onClick={(event) => {
+            event.preventDefault();
+            onNavigate("home", "visit");
+          }}
+        >
           Visit Us
         </a>
-        <a href={contactHref} onClick={() => onNavigate("home")}>
+        <a
+          href={contactHref}
+          onClick={(event) => {
+            event.preventDefault();
+            onNavigate("home", "contact");
+          }}
+        >
           Contact
         </a>
         {page === "about" || page === "collections" ? (
-          <a className="nav-pill" href="#/" onClick={() => onNavigate("home")}>
+          <a
+            className="nav-pill"
+            href={buildInternalHref({ page: "home" })}
+            onClick={(event) => {
+              event.preventDefault();
+              onNavigate("home");
+            }}
+          >
             Back Home
           </a>
         ) : null}
@@ -1037,7 +1098,7 @@ function AboutPage() {
             personal attention under the guidance of Mr. Hemant Soni.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-solid" href="#visit">
+            <a className="btn btn-solid" href={buildInternalHref({ page: "home", section: "visit" })}>
               Visit The Showroom
             </a>
             <a className="btn btn-outline" href="tel:+919826237997">
@@ -1048,8 +1109,8 @@ function AboutPage() {
 
         <div className="about-page-visual story-image">
           <img
-            src={storyImages[0].src}
-            alt={storyImages[0].alt}
+            src={ownerImage.src}
+            alt={ownerImage.alt}
             className="media-image"
           />
           <div className="frame-copy">
@@ -1312,10 +1373,10 @@ function HomePage() {
             </div>
           </div>
           <div className="hero-actions">
-            <a className="btn btn-solid" href="#visit">
+            <a className="btn btn-solid" href={buildInternalHref({ page: "home", section: "visit" })}>
               Plan Your Visit
             </a>
-            <a className="btn btn-outline" href="#/about">
+            <a className="btn btn-outline" href={buildInternalHref({ page: "about" })}>
               About Us
             </a>
           </div>
@@ -1442,10 +1503,10 @@ function HomePage() {
                 J.K. Jewellers.
               </p>
               <div className="hero-actions">
-                <a className="btn btn-outline" href="#visit">
+                <a className="btn btn-outline" href={buildInternalHref({ page: "home", section: "visit" })}>
                   Book A Visit
                 </a>
-                <a className="btn btn-solid" href="#contact">
+                <a className="btn btn-solid" href={buildInternalHref({ page: "home", section: "contact" })}>
                   Make Enquiry
                 </a>
               </div>
@@ -1595,21 +1656,43 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [leadModalOpen, setLeadModalOpen] = useState(true);
   const [locationCardOpen, setLocationCardOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState(getCurrentSection);
 
   useEffect(() => {
     const syncPage = () => {
       setPage(getCurrentPage());
+      setActiveSection(getCurrentSection());
       setMenuOpen(false);
     };
 
-    window.addEventListener("hashchange", syncPage);
+    window.addEventListener("popstate", syncPage);
+    window.addEventListener("routechange", syncPage);
 
-    if (!window.location.hash) {
-      navigateTo("#/");
+    if (window.location.hash) {
+      navigateTo({ page: "home" }, { replace: true });
     }
 
-    return () => window.removeEventListener("hashchange", syncPage);
+    return () => {
+      window.removeEventListener("popstate", syncPage);
+      window.removeEventListener("routechange", syncPage);
+    };
   }, []);
+
+  useEffect(() => {
+    if (page !== "home" || !activeSection) {
+      return;
+    }
+
+    const target = document.getElementById(activeSection);
+
+    if (!target) {
+      return;
+    }
+
+    window.requestAnimationFrame(() => {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [activeSection, page]);
 
   useEffect(() => {
     const nodes = document.querySelectorAll(".reveal-on-scroll");
@@ -1635,26 +1718,21 @@ function App() {
     return () => observer.disconnect();
   }, [page]);
 
-  const handleNavigate = (targetPage) => {
+  const handleNavigate = (targetPage, section = "") => {
     setMenuOpen(false);
     setLocationCardOpen(false);
 
     if (targetPage === "about") {
-      navigateTo("#/about");
+      navigateTo({ page: "about" });
       return;
     }
 
     if (targetPage === "collections") {
-      navigateTo("#/collections");
+      navigateTo({ page: "collections" });
       return;
     }
 
-    if (
-      window.location.hash.startsWith("#/about") ||
-      window.location.hash.startsWith("#/collections")
-    ) {
-      navigateTo("#/");
-    }
+    navigateTo({ page: "home", section });
   };
 
   const handleLocationClick = () => {
