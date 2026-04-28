@@ -416,6 +416,23 @@ a {
   background: rgba(255, 252, 245, 0.6);
 }
 
+.btn-whatsapp {
+  width: 56px;
+  min-height: 56px;
+  padding: 0;
+  border-radius: 18px;
+  background: rgba(255, 252, 245, 0.92);
+  color: var(--gold-deep);
+  border: 1px solid rgba(201, 163, 62, 0.28);
+  box-shadow: 0 16px 30px rgba(88, 65, 27, 0.12);
+}
+
+.btn-whatsapp svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
 .visit-card {
   padding: 28px;
   border-radius: 28px;
@@ -1104,7 +1121,7 @@ a {
 
 .collections-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 
@@ -1152,6 +1169,12 @@ a {
   display: grid;
   gap: 14px;
   padding: 20px;
+  align-content: start;
+}
+
+.collection-product-body .btn-whatsapp.full-width {
+  width: 56px;
+  margin-top: 4px;
 }
 
 .collection-product-tag {
@@ -2429,7 +2452,7 @@ a {
 
   .collections-tabs {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
   }
 
@@ -2469,6 +2492,12 @@ a {
 
   .collection-product-body h4 {
     font-size: 1.2rem;
+  }
+
+  .collection-product-body .btn-whatsapp.full-width {
+    width: 48px;
+    min-height: 48px;
+    border-radius: 16px;
   }
 
   .collection-product-tag {

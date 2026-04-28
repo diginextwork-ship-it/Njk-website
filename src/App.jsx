@@ -195,6 +195,9 @@ const collectionCategories = [
   { id: "earrings", label: "Earrings", message: "earings" },
   { id: "necklace", label: "Necklace", message: "necklace" },
   { id: "rings", label: "Rings", message: "rings" },
+  { id: "chains", label: "Chains", message: "chains" },
+  { id: "bangles-kadas", label: "Bangles & Kadas", message: "bangles and kadas" },
+  { id: "weddings-heritage", label: "Wedding & Heritage", message: "wedding and heritage jewellery" },
 ];
 
 const collectionItems = [
@@ -221,6 +224,24 @@ const collectionItems = [
     alt: "Decorative earring detail",
     category: "earrings",
     title: "Festive Earrings",
+  },
+  {
+    src: "/earrings/earrings5.jpeg",
+    alt: "Statement earrings design",
+    category: "earrings",
+    title: "Statement Earrings",
+  },
+  {
+    src: "/earrings/earrings6.jpeg",
+    alt: "Grand earrings design",
+    category: "earrings",
+    title: "Grand Earrings",
+  },
+  {
+    src: "/earrings/set1.jpeg",
+    alt: "Earrings set design",
+    category: "earrings",
+    title: "Earrings Set",
   },
   {
     src: "/necklace/neck_1.jpeg",
@@ -289,6 +310,12 @@ const collectionItems = [
     title: "Royal Bridal Necklace",
   },
   {
+    src: "/necklace/neck12.jpeg",
+    alt: "New necklace set design",
+    category: "necklace",
+    title: "Heritage Necklace",
+  },
+  {
     src: "/rings/rings.jpeg",
     alt: "Gold ring collection",
     category: "rings",
@@ -299,6 +326,90 @@ const collectionItems = [
     alt: "Ring display in showroom",
     category: "rings",
     title: "Signature Rings",
+  },
+  {
+    src: "/rings/rings3.jpeg",
+    alt: "Classic ring design",
+    category: "rings",
+    title: "Classic Rings",
+  },
+  {
+    src: "/rings/rings4.jpeg",
+    alt: "Premium ring design",
+    category: "rings",
+    title: "Premium Rings",
+  },
+  {
+    src: "/chains/chains1.jpeg",
+    alt: "Gold chains design",
+    category: "chains",
+    title: "Signature Chains",
+  },
+  {
+    src: "/bangles-kadas/bangles1.jpeg",
+    alt: "Bangles and kadas design",
+    category: "bangles-kadas",
+    title: "Classic Bangles",
+  },
+  {
+    src: "/bangles-kadas/trad1.jpeg",
+    alt: "Traditional kada design",
+    category: "bangles-kadas",
+    title: "Traditional Kadas",
+  },
+  {
+    src: "/weddings-heritage/har1.jpeg",
+    alt: "Wedding jewellery set",
+    category: "weddings-heritage",
+    title: "Wedding Set I",
+  },
+  {
+    src: "/weddings-heritage/har2.jpeg",
+    alt: "Wedding heritage jewellery",
+    category: "weddings-heritage",
+    title: "Wedding Set II",
+  },
+  {
+    src: "/weddings-heritage/har3.jpeg",
+    alt: "Heritage jewellery design",
+    category: "weddings-heritage",
+    title: "Heritage Set I",
+  },
+  {
+    src: "/weddings-heritage/har4.jpeg",
+    alt: "Traditional wedding jewellery",
+    category: "weddings-heritage",
+    title: "Wedding Set III",
+  },
+  {
+    src: "/weddings-heritage/har5.jpeg",
+    alt: "Grand heritage jewellery",
+    category: "weddings-heritage",
+    title: "Heritage Set II",
+  },
+  {
+    src: "/weddings-heritage/har6.jpeg",
+    alt: "Bridal heritage jewellery",
+    category: "weddings-heritage",
+    title: "Heritage Set III",
+  },
+  {
+    src: "/weddings-heritage/heritage.jpeg",
+    alt: "Heritage jewellery collection",
+    category: "weddings-heritage",
+    title: "Heritage Collection",
+  },
+  {
+    src: "/weddings-heritage/heritage_rings.jpeg",
+    alt: "Heritage rings collection",
+    category: "weddings-heritage",
+    title: "Heritage Rings",
+  },
+  {
+    src: "/weddings-heritage/set2.jpeg",
+    alt: "Wedding jewellery ensemble",
+    category: "weddings-heritage",
+    title: "Wedding Ensemble",
   },
 ];
 
@@ -1121,7 +1232,7 @@ function CollectionPage() {
         <div className="collections-browser-top">
           <div className="collections-heading">
             <p className="section-kicker">Shop By Category</p>
-            <h3>Choose earrings, necklace, or rings.</h3>
+            <h3>Choose from all jewellery sections.</h3>
           </div>
 
           <div className="collections-tabs" role="tablist" aria-label="Jewellery categories">
@@ -1154,12 +1265,15 @@ function CollectionPage() {
                 <span className="collection-product-tag">{activeCollection.label}</span>
                 <h4>{item.title}</h4>
                 <a
-                  className="btn btn-solid full-width"
+                  className="btn btn-whatsapp full-width"
                   href={`https://wa.me/919826237997?text=${encodeURIComponent(`Intrested in ${activeCollection.message}`)}`}
                   target="_blank"
                   rel="noreferrer"
+                  aria-label={`WhatsApp about ${item.title}`}
                 >
-                  Enquire Now
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.52 3.48A11.83 11.83 0 0 0 12.09.02C5.58.02.27 5.33.27 11.84c0 2.09.55 4.13 1.6 5.92L0 24l6.43-1.83a11.8 11.8 0 0 0 5.66 1.45h.01c6.51 0 11.82-5.31 11.82-11.82 0-3.16-1.23-6.12-3.4-8.32ZM12.1 21.62h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.82 1.09 1.12-3.72-.23-.38a9.82 9.82 0 0 1-1.51-5.19c0-5.42 4.41-9.83 9.84-9.83 2.62 0 5.09 1.02 6.93 2.88a9.72 9.72 0 0 1 2.87 6.94c0 5.42-4.41 9.83-9.83 9.83Zm5.39-7.36c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.66.15-.2.3-.76.98-.93 1.18-.17.2-.34.22-.64.08-.3-.15-1.24-.46-2.37-1.47-.87-.78-1.46-1.74-1.63-2.03-.17-.3-.02-.45.13-.6.13-.13.3-.34.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.66-.5-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.46 0 1.45 1.07 2.85 1.22 3.05.15.2 2.09 3.19 5.06 4.47.71.31 1.27.49 1.71.62.72.23 1.37.2 1.88.12.57-.08 1.78-.73 2.03-1.44.25-.7.25-1.3.17-1.43-.08-.13-.27-.2-.57-.35Z" />
+                  </svg>
                 </a>
               </div>
             </article>
