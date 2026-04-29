@@ -1712,7 +1712,8 @@ function Footer() {
         </div>
         <div className="footer-credit-strip">
           <a href="/svg_info.svg" target="_blank" rel="noreferrer">
-            like the website? we are the svg_info.svg logo
+            <span>Like the website? We are</span>
+            <img src="/svg_info.svg" alt="svg_info logo" className="footer-credit-logo" />
           </a>
         </div>
       </div>
