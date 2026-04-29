@@ -1710,6 +1710,11 @@ function Footer() {
           <p>New J.K. Jewellers, Panna Naka, Chattarpur</p>
           <p>Royal craftsmanship, trusted service, and timeless jewellery.</p>
         </div>
+        <div className="footer-credit-strip">
+          <a href="/svg_info.svg" target="_blank" rel="noreferrer">
+            like the website? we are the svg_info.svg logo
+          </a>
+        </div>
       </div>
     </footer>
   );
