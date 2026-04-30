@@ -142,11 +142,11 @@ const storyImages = [
 
 const marqueeImages = [
   {
-    src: "/necklace/earings1.jpeg",
+    src: "/earrings/earings1.jpeg",
     alt: "Royal earrings design",
   },
   {
-    src: "/necklace/earings4.jpeg",
+    src: "/earrings/earings4.jpeg",
     alt: "Decorative earring detail",
   },
 ];
@@ -191,13 +191,12 @@ const galleryItems = [
 ];
 
 const collectionCategories = [
-  { id: "earrings", label: "Earrings", message: "earings" },
+  { id: "earrings", label: "Earrings & Tops", message: "earrings and tops" },
   { id: "necklace", label: "Necklace", message: "necklace" },
   { id: "rings", label: "Rings", message: "rings" },
-  { id: "fine-craft", label: "Fine Craft", message: "fine craft rings" },
+  { id: "special-ring-edit", label: "Special Ring Edit", message: "special ring designs" },
   { id: "chains", label: "Chains", message: "chains" },
   { id: "bangles-kadas", label: "Bangles & Kadas", message: "bangles and kadas" },
-  { id: "weddings-heritage", label: "Wedding & Heritage", message: "wedding and heritage jewellery" },
 ];
 
 const collectionItems = [
@@ -242,6 +241,12 @@ const collectionItems = [
     alt: "Earrings set design",
     category: "earrings",
     title: "Earrings Set",
+  },
+  {
+    src: "/earrings/har5.jpeg",
+    alt: "Grand heritage earrings",
+    category: "earrings",
+    title: "Heritage Earrings",
   },
   {
     src: "/necklace/neck_1.jpeg",
@@ -316,6 +321,42 @@ const collectionItems = [
     title: "Heritage Necklace",
   },
   {
+    src: "/necklace/har1.jpeg",
+    alt: "Wedding jewellery set",
+    category: "necklace",
+    title: "Wedding Necklace I",
+  },
+  {
+    src: "/necklace/har2.jpeg",
+    alt: "Wedding heritage jewellery",
+    category: "necklace",
+    title: "Wedding Necklace II",
+  },
+  {
+    src: "/necklace/har3.jpeg",
+    alt: "Heritage jewellery design",
+    category: "necklace",
+    title: "Heritage Necklace I",
+  },
+  {
+    src: "/necklace/har4.jpeg",
+    alt: "Traditional wedding jewellery",
+    category: "necklace",
+    title: "Wedding Necklace III",
+  },
+  {
+    src: "/necklace/har6.jpeg",
+    alt: "Bridal heritage jewellery",
+    category: "necklace",
+    title: "Heritage Necklace II",
+  },
+  {
+    src: "/necklace/set2.jpeg",
+    alt: "Bridal necklace set",
+    category: "necklace",
+    title: "Bridal Set",
+  },
+  {
     src: "/rings/rings.jpeg",
     alt: "Gold ring collection",
     category: "rings",
@@ -340,70 +381,82 @@ const collectionItems = [
     title: "Premium Rings",
   },
   {
-    src: "/fine-craft-edit/spec_ring1.jpeg",
-    alt: "Fine craft ring design 1",
-    category: "fine-craft",
-    title: "Fine Craft Ring 1",
+    src: "/rings/heritage.jpeg",
+    alt: "Heritage jewellery collection",
+    category: "rings",
+    title: "Heritage Collection",
   },
   {
-    src: "/fine-craft-edit/spec_ring2.jpeg",
-    alt: "Fine craft ring design 2",
-    category: "fine-craft",
-    title: "Fine Craft Ring 2",
+    src: "/rings/heritage_rings.jpeg",
+    alt: "Heritage rings collection",
+    category: "rings",
+    title: "Heritage Rings",
   },
   {
-    src: "/fine-craft-edit/spec_ring3.jpeg",
-    alt: "Fine craft ring design 3",
-    category: "fine-craft",
-    title: "Fine Craft Ring 3",
+    src: "/special-ring-edit/spec_ring1.jpeg",
+    alt: "Special ring design 1",
+    category: "special-ring-edit",
+    title: "Special Ring 1",
   },
   {
-    src: "/fine-craft-edit/spec_ring4.jpeg",
-    alt: "Fine craft ring design 4",
-    category: "fine-craft",
-    title: "Fine Craft Ring 4",
+    src: "/special-ring-edit/spec_ring2.jpeg",
+    alt: "Special ring design 2",
+    category: "special-ring-edit",
+    title: "Special Ring 2",
   },
   {
-    src: "/fine-craft-edit/spec_ring5.jpeg",
-    alt: "Fine craft ring design 5",
-    category: "fine-craft",
-    title: "Fine Craft Ring 5",
+    src: "/special-ring-edit/spec_ring3.jpeg",
+    alt: "Special ring design 3",
+    category: "special-ring-edit",
+    title: "Special Ring 3",
   },
   {
-    src: "/fine-craft-edit/spec_ring6.jpeg",
-    alt: "Fine craft ring design 6",
-    category: "fine-craft",
-    title: "Fine Craft Ring 6",
+    src: "/special-ring-edit/spec_ring4.jpeg",
+    alt: "Special ring design 4",
+    category: "special-ring-edit",
+    title: "Special Ring 4",
   },
   {
-    src: "/fine-craft-edit/spec_ring7.jpeg",
-    alt: "Fine craft ring design 7",
-    category: "fine-craft",
-    title: "Fine Craft Ring 7",
+    src: "/special-ring-edit/spec_ring5.jpeg",
+    alt: "Special ring design 5",
+    category: "special-ring-edit",
+    title: "Special Ring 5",
   },
   {
-    src: "/fine-craft-edit/spec_ring8.jpeg",
-    alt: "Fine craft ring design 8",
-    category: "fine-craft",
-    title: "Fine Craft Ring 8",
+    src: "/special-ring-edit/spec_ring6.jpeg",
+    alt: "Special ring design 6",
+    category: "special-ring-edit",
+    title: "Special Ring 6",
   },
   {
-    src: "/fine-craft-edit/spec_ring9.jpeg",
-    alt: "Fine craft ring design 9",
-    category: "fine-craft",
-    title: "Fine Craft Ring 9",
+    src: "/special-ring-edit/spec_ring7.jpeg",
+    alt: "Special ring design 7",
+    category: "special-ring-edit",
+    title: "Special Ring 7",
   },
   {
-    src: "/fine-craft-edit/spec_ring10.jpeg",
-    alt: "Fine craft ring design 10",
-    category: "fine-craft",
-    title: "Fine Craft Ring 10",
+    src: "/special-ring-edit/spec_ring8.jpeg",
+    alt: "Special ring design 8",
+    category: "special-ring-edit",
+    title: "Special Ring 8",
   },
   {
-    src: "/fine-craft-edit/spec_ring11.jpeg",
-    alt: "Fine craft ring design 11",
-    category: "fine-craft",
-    title: "Fine Craft Ring 11",
+    src: "/special-ring-edit/spec_ring9.jpeg",
+    alt: "Special ring design 9",
+    category: "special-ring-edit",
+    title: "Special Ring 9",
+  },
+  {
+    src: "/special-ring-edit/spec_ring10.jpeg",
+    alt: "Special ring design 10",
+    category: "special-ring-edit",
+    title: "Special Ring 10",
+  },
+  {
+    src: "/special-ring-edit/spec_ring11.jpeg",
+    alt: "Special ring design 11",
+    category: "special-ring-edit",
+    title: "Special Ring 11",
   },
   {
     src: "/chains/chains1.jpeg",
@@ -422,60 +475,6 @@ const collectionItems = [
     alt: "Traditional kada design",
     category: "bangles-kadas",
     title: "Traditional Kadas",
-  },
-  {
-    src: "/weddings-heritage/har1.jpeg",
-    alt: "Wedding jewellery set",
-    category: "weddings-heritage",
-    title: "Wedding Set I",
-  },
-  {
-    src: "/weddings-heritage/har2.jpeg",
-    alt: "Wedding heritage jewellery",
-    category: "weddings-heritage",
-    title: "Wedding Set II",
-  },
-  {
-    src: "/weddings-heritage/har3.jpeg",
-    alt: "Heritage jewellery design",
-    category: "weddings-heritage",
-    title: "Heritage Set I",
-  },
-  {
-    src: "/weddings-heritage/har4.jpeg",
-    alt: "Traditional wedding jewellery",
-    category: "weddings-heritage",
-    title: "Wedding Set III",
-  },
-  {
-    src: "/weddings-heritage/har5.jpeg",
-    alt: "Grand heritage jewellery",
-    category: "weddings-heritage",
-    title: "Heritage Set II",
-  },
-  {
-    src: "/weddings-heritage/har6.jpeg",
-    alt: "Bridal heritage jewellery",
-    category: "weddings-heritage",
-    title: "Heritage Set III",
-  },
-  {
-    src: "/weddings-heritage/heritage.jpeg",
-    alt: "Heritage jewellery collection",
-    category: "weddings-heritage",
-    title: "Heritage Collection",
-  },
-  {
-    src: "/weddings-heritage/heritage_rings.jpeg",
-    alt: "Heritage rings collection",
-    category: "weddings-heritage",
-    title: "Heritage Rings",
-  },
-  {
-    src: "/weddings-heritage/set2.jpeg",
-    alt: "Wedding jewellery ensemble",
-    category: "weddings-heritage",
-    title: "Wedding Ensemble",
   },
 ];
 
@@ -1559,7 +1558,7 @@ function HomePage() {
               <h3>
                 Royal
                 <br />
-                Earrings
+                Earrings & Tops
               </h3>
               <p>
                 A rich display of elegant earrings, necklace sets, and

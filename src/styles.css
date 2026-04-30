@@ -1047,6 +1047,7 @@ a {
   position: relative;
   overflow: hidden;
   padding: 40px;
+  margin-bottom: 28px;
   border: 1px solid var(--line);
   border-radius: 34px;
   background:
