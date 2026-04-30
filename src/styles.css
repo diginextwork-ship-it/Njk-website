@@ -198,7 +198,8 @@ a {
 }
 
 .brand-logo {
-  width: clamp(48px, 8vw, 72px);
+  width: clamp(110px, 12vw, 150px);
+  margin-left: -28px;
   height: auto;
   display: block;
   object-fit: contain;
@@ -2656,7 +2657,8 @@ a {
   }
 
   .brand-logo {
-    width: 44px;
+    width: 88px;
+    margin-left: -18px;
   }
 
   .about-page-copy h2,
