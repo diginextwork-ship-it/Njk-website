@@ -5,7 +5,7 @@ const googleFormNameEntry = import.meta.env.VITE_GOOGLE_FORM_NAME_ENTRY?.trim();
 const googleFormPhoneEntry = import.meta.env.VITE_GOOGLE_FORM_PHONE_ENTRY?.trim();
 const googleFormSourceEntry = import.meta.env.VITE_GOOGLE_FORM_SOURCE_ENTRY?.trim();
 const whatsappUrl =
-  "https://wa.me/919826237997?text=Hello%20jk%20jwellers%2C%20I%20want%20to%20make%20an%20enquiry.";
+  "https://wa.me/919826237997?text=Hello%20njk%20jwellers%2C%20I%20want%20to%20make%20an%20enquiry.";
 
 const hasGoogleFormConfig = Boolean(
   googleFormAction && googleFormNameEntry && googleFormPhoneEntry,
@@ -93,12 +93,12 @@ const heroImage = {
 
 const traditionalImage = {
   src: "/traditional.jpeg",
-    alt: "Traditional jewellery display from jk jwellers",
+    alt: "Traditional jewellery display from njk jwellers",
 };
 
 const ownerImage = {
   src: "/owner_pic.png",
-    alt: "Mr. Hemant Soni, owner of jk jwellers",
+    alt: "Mr. Hemant Soni, owner of njk jwellers",
 };
 
 const showcaseItems = [
@@ -491,7 +491,7 @@ const timelineMilestones = [
   {
     year: "1962",
     title: "The House Begins",
-      text: "jk jwellers opens its doors with a promise of honest guidance and enduring craftsmanship.",
+      text: "njk jwellers opens its doors with a promise of honest guidance and enduring craftsmanship.",
   },
   {
     year: "1987",
@@ -548,7 +548,7 @@ const pressMentions = [
 ];
 
 const address =
-  "Panna Naka, Chattarpur, in front of Parmar Hospital, beside Jain Chhole Bhature.";
+  "Panna Naka, In front of Parmar Hospital, Beside Jain Chhole Bhature Chhatarpur MP";
 const mapUrl =
   "https://www.google.com/maps/place/New+J.K+Jewellers/@24.8974852,79.5924215,17z/data=!3m1!4b1!4m6!3m5!1s0x398297e87ee859e1:0xb3bdde3c609c6bec!8m2!3d24.8974852!4d79.5924215!16s%2Fg%2F11cmpf117k?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D";
 
@@ -607,7 +607,7 @@ function MarqueeStrip({ items, reverse = false }) {
   );
 }
 
-function BrandLogo({ className = "brand-logo", alt = "NJK Jewellers logo" }) {
+function BrandLogo({ className = "brand-logo", alt = "njk jwellers logo" }) {
   return <img className={className} src="/njk_logo.png" alt={alt} />;
 }
 
@@ -807,7 +807,7 @@ function FounderSpotlight() {
           but to help families choose pieces that suit the meaning of the
           occasion. With a close eye for classic silhouettes, bridal richness,
           and lasting value, he has helped preserve the welcoming character that
-                  defines jk jwellers.
+                  defines njk jwellers.
         </p>
         <div className="founder-signature">Mr. Hemant Soni</div>
       </div>
@@ -905,7 +905,7 @@ function Header({ page, menuOpen, onMenuToggle, onNavigate }) {
         <BrandLogo />
         <div>
           <p className="eyebrow">Since 1962</p>
-              <h1>jk jwellers</h1>
+              <h1>njk jwellers</h1>
         </div>
       </div>
 
@@ -1006,7 +1006,7 @@ function LeadModal({ open, onClose }) {
             <p className="section-kicker">Thank You</p>
             <h3 id="lead-modal-title">We will reach out shortly.</h3>
             <p>
-                    Your enquiry has been noted for jk jwellers. You can also
+                    Your enquiry has been noted for njk jwellers. You can also
               call directly at <a href="tel:+919826237997">+91 98262 37997</a>.
             </p>
             <button type="button" className="btn btn-solid" onClick={onClose}>
@@ -1154,7 +1154,7 @@ function AboutPage() {
           <p className="section-kicker">About Us</p>
           <h2>A legacy of trust, tradition, and personal jewellery guidance.</h2>
           <p className="lead">
-                jk jwellers has served families since 1962 with a showroom
+                njk jwellers has served families since 1962 with a showroom
             experience built on dependable service, classic taste, and warm
             personal attention under the guidance of Mr. Hemant Soni.
           </p>
@@ -1237,7 +1237,7 @@ function AboutPage() {
             </div>
 
             <p className="about-lead">
-                jk jwellers is a long-standing jewellery showroom serving
+                njk jwellers is a long-standing jewellery showroom serving
               the local community since <strong>1962</strong>. Under the
               guidance of owner <strong>Mr. Hemant Soni</strong>, the showroom is
               known for a dependable approach, respectful service, and jewellery
@@ -1245,8 +1245,8 @@ function AboutPage() {
               alike.
             </p>
             <p className="about-body">
-              Located at <strong>Panna Naka, Chattarpur</strong>, in front of
-              Parmar Hospital, beside Jain Chhole Bhature, the store is a
+              Located at <strong>Panna Naka</strong>, In front of Parmar
+              Hospital, Beside Jain Chhole Bhature Chhatarpur MP, the store is a
               familiar and trusted destination where customers explore
               necklaces, earrings, rings, bridal styles, festive sets, and
               timeless traditional pieces.
@@ -1308,7 +1308,7 @@ function AboutPage() {
           <p className="section-kicker">Showroom Details</p>
           <h3>Come experience the collection in person.</h3>
           <p>
-                Visit jk jwellers at {address} We welcome you for bridal
+                Visit njk jwellers at {address} We welcome you for bridal
             shopping, festive jewellery, gifting, and classic daily-wear
             selections with personal assistance at every step.
           </p>
@@ -1388,7 +1388,7 @@ function CollectionPage() {
                 <h4>{item.title}</h4>
                 <a
                   className="btn btn-whatsapp full-width"
-                  href={`https://wa.me/919826237997?text=${encodeURIComponent(`Intrested in ${activeCollection.message}`)}`}
+                  href={`https://wa.me/919826237997?text=${encodeURIComponent(`Interested in ${activeCollection.message} from njk jwellers`)}`}
                   target="_blank"
                   rel="noreferrer"
                   aria-label={`WhatsApp about ${item.title}`}
@@ -1415,7 +1415,7 @@ function HomePage() {
           <p className="section-kicker">Timeless Craft, Heirloom Detail</p>
           <h2>Jewellery chosen with trust, tradition, and royal elegance.</h2>
           <p className="lead">
-                jk jwellers has been serving customers since 1962 with
+                njk jwellers has been serving customers since 1962 with
             carefully selected bridal, festive, traditional, and everyday
             jewellery pieces in a welcoming showroom experience led by owner
             Mr. Hemant Soni.
@@ -1430,7 +1430,7 @@ function HomePage() {
               <span>Owner Guidance</span>
             </div>
             <div>
-              <strong>Panna Naka, Chattarpur</strong>
+              <strong>Panna Naka, Chhatarpur MP</strong>
               <span>Easy To Visit</span>
             </div>
           </div>
@@ -1563,8 +1563,8 @@ function HomePage() {
               </h3>
               <p>
                 A rich display of elegant earrings, necklace sets, and
-                occasion-ready styles that reflect the classic identity of New
-                  jk jwellers.
+                occasion-ready styles that reflect the classic identity of
+                  njk jwellers.
               </p>
               <div className="hero-actions">
                 <a className="btn btn-outline" href={buildInternalHref({ page: "home", section: "visit" })}>
@@ -1608,7 +1608,7 @@ function HomePage() {
           <p className="section-kicker">Visit The Showroom</p>
           <h3>Come experience the collection in person.</h3>
           <p>
-                Visit jk jwellers at {address} We welcome you for bridal
+                Visit njk jwellers at {address} We welcome you for bridal
             shopping, festive jewellery, gifting, and classic daily-wear
             selections with personal assistance at every step.
           </p>
@@ -1655,7 +1655,7 @@ function Footer() {
               <circle cx="110" cy="110" r="78" className="seal-inner" />
               <text className="seal-text">
                 <textPath href="#seal-circle" startOffset="50%" textAnchor="middle">
-                JK JWELLERS • HERITAGE HOUSE •
+                NJK JWELLERS • HERITAGE HOUSE •
                 </textPath>
               </text>
               <text x="110" y="100" textAnchor="middle" className="seal-year">
@@ -1671,10 +1671,11 @@ function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <BrandLogo className="footer-logo" />
-              <p className="section-kicker footer-kicker">jk jwellers</p>
+              <p className="section-kicker footer-kicker">njk jwellers</p>
             <h3>Trusted jewellery heritage since 1962.</h3>
             <p>
-              A traditional jewellery destination at Panna Naka, Chattarpur,
+              A traditional jewellery destination at Panna Naka, In front of
+              Parmar Hospital, Beside Jain Chhole Bhature Chhatarpur MP,
               known for elegant designs, reliable service, and a personal
               shopping experience guided by Mr. Hemant Soni.
             </p>
@@ -1693,21 +1694,21 @@ function Footer() {
             <h4>Find Us</h4>
             <div className="map-wrap">
               <iframe
-                  src="https://www.google.com/maps?q=jk%20jwellers%2C%20Panna%20Naka%2C%20Chattarpur%2C%20Madhya%20Pradesh&z=16&output=embed"
+                  src="https://www.google.com/maps?q=njk%20jwellers%2C%20Panna%20Naka%2C%20In%20front%20of%20Parmar%20Hospital%2C%20Beside%20Jain%20Chhole%20Bhature%20Chhatarpur%20MP&z=16&output=embed"
                 width="600"
                 height="450"
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                  title="jk jwellers location map"
+                  title="njk jwellers location map"
               ></iframe>
             </div>
           </div>
         </div>
 
         <div className="footer-bottom">
-                <p>jk jwellers, Panna Naka, Chattarpur</p>
+                <p>njk jwellers, Panna Naka, Chhatarpur MP</p>
           <p>Royal craftsmanship, trusted service, and timeless jewellery.</p>
         </div>
         <div className="footer-credit-strip">
