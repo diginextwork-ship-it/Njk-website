@@ -5,7 +5,7 @@ const googleFormNameEntry = import.meta.env.VITE_GOOGLE_FORM_NAME_ENTRY?.trim();
 const googleFormPhoneEntry = import.meta.env.VITE_GOOGLE_FORM_PHONE_ENTRY?.trim();
 const googleFormSourceEntry = import.meta.env.VITE_GOOGLE_FORM_SOURCE_ENTRY?.trim();
 const whatsappUrl =
-  "https://wa.me/919826237997?text=Hello%20New%20J.K.%20Jewellers%2C%20I%20want%20to%20make%20an%20enquiry.";
+  "https://wa.me/919826237997?text=Hello%20jk%20jwellers%2C%20I%20want%20to%20make%20an%20enquiry.";
 
 const hasGoogleFormConfig = Boolean(
   googleFormAction && googleFormNameEntry && googleFormPhoneEntry,
@@ -93,12 +93,12 @@ const heroImage = {
 
 const traditionalImage = {
   src: "/traditional.jpeg",
-  alt: "Traditional jewellery display from New J.K. Jewellers",
+    alt: "Traditional jewellery display from jk jwellers",
 };
 
 const ownerImage = {
   src: "/owner_pic.png",
-  alt: "Mr. Hemant Soni, owner of New J.K. Jewellers",
+    alt: "Mr. Hemant Soni, owner of jk jwellers",
 };
 
 const showcaseItems = [
@@ -491,7 +491,7 @@ const timelineMilestones = [
   {
     year: "1962",
     title: "The House Begins",
-    text: "New J.K. Jewellers opens its doors with a promise of honest guidance and enduring craftsmanship.",
+      text: "jk jwellers opens its doors with a promise of honest guidance and enduring craftsmanship.",
   },
   {
     year: "1987",
@@ -807,7 +807,7 @@ function FounderSpotlight() {
           but to help families choose pieces that suit the meaning of the
           occasion. With a close eye for classic silhouettes, bridal richness,
           and lasting value, he has helped preserve the welcoming character that
-          defines New J.K. Jewellers.
+                  defines jk jwellers.
         </p>
         <div className="founder-signature">Mr. Hemant Soni</div>
       </div>
@@ -905,7 +905,7 @@ function Header({ page, menuOpen, onMenuToggle, onNavigate }) {
         <BrandLogo />
         <div>
           <p className="eyebrow">Since 1962</p>
-          <h1>New J.K. Jewellers</h1>
+              <h1>jk jwellers</h1>
         </div>
       </div>
 
@@ -1006,7 +1006,7 @@ function LeadModal({ open, onClose }) {
             <p className="section-kicker">Thank You</p>
             <h3 id="lead-modal-title">We will reach out shortly.</h3>
             <p>
-              Your enquiry has been noted for New J.K. Jewellers. You can also
+                    Your enquiry has been noted for jk jwellers. You can also
               call directly at <a href="tel:+919826237997">+91 98262 37997</a>.
             </p>
             <button type="button" className="btn btn-solid" onClick={onClose}>
@@ -1154,7 +1154,7 @@ function AboutPage() {
           <p className="section-kicker">About Us</p>
           <h2>A legacy of trust, tradition, and personal jewellery guidance.</h2>
           <p className="lead">
-            New J.K. Jewellers has served families since 1962 with a showroom
+                jk jwellers has served families since 1962 with a showroom
             experience built on dependable service, classic taste, and warm
             personal attention under the guidance of Mr. Hemant Soni.
           </p>
@@ -1237,7 +1237,7 @@ function AboutPage() {
             </div>
 
             <p className="about-lead">
-              New J.K. Jewellers is a long-standing jewellery showroom serving
+                jk jwellers is a long-standing jewellery showroom serving
               the local community since <strong>1962</strong>. Under the
               guidance of owner <strong>Mr. Hemant Soni</strong>, the showroom is
               known for a dependable approach, respectful service, and jewellery
@@ -1308,7 +1308,7 @@ function AboutPage() {
           <p className="section-kicker">Showroom Details</p>
           <h3>Come experience the collection in person.</h3>
           <p>
-            Visit New J.K. Jewellers at {address} We welcome you for bridal
+                Visit jk jwellers at {address} We welcome you for bridal
             shopping, festive jewellery, gifting, and classic daily-wear
             selections with personal assistance at every step.
           </p>
@@ -1415,7 +1415,7 @@ function HomePage() {
           <p className="section-kicker">Timeless Craft, Heirloom Detail</p>
           <h2>Jewellery chosen with trust, tradition, and royal elegance.</h2>
           <p className="lead">
-            New J.K. Jewellers has been serving customers since 1962 with
+                jk jwellers has been serving customers since 1962 with
             carefully selected bridal, festive, traditional, and everyday
             jewellery pieces in a welcoming showroom experience led by owner
             Mr. Hemant Soni.
@@ -1564,7 +1564,7 @@ function HomePage() {
               <p>
                 A rich display of elegant earrings, necklace sets, and
                 occasion-ready styles that reflect the classic identity of New
-                J.K. Jewellers.
+                  jk jwellers.
               </p>
               <div className="hero-actions">
                 <a className="btn btn-outline" href={buildInternalHref({ page: "home", section: "visit" })}>
@@ -1608,7 +1608,7 @@ function HomePage() {
           <p className="section-kicker">Visit The Showroom</p>
           <h3>Come experience the collection in person.</h3>
           <p>
-            Visit New J.K. Jewellers at {address} We welcome you for bridal
+                Visit jk jwellers at {address} We welcome you for bridal
             shopping, festive jewellery, gifting, and classic daily-wear
             selections with personal assistance at every step.
           </p>
@@ -1655,7 +1655,7 @@ function Footer() {
               <circle cx="110" cy="110" r="78" className="seal-inner" />
               <text className="seal-text">
                 <textPath href="#seal-circle" startOffset="50%" textAnchor="middle">
-                  NEW J.K. JEWELLERS • HERITAGE HOUSE •
+                JK JWELLERS • HERITAGE HOUSE •
                 </textPath>
               </text>
               <text x="110" y="100" textAnchor="middle" className="seal-year">
@@ -1671,7 +1671,7 @@ function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <BrandLogo className="footer-logo" />
-            <p className="section-kicker footer-kicker">New J.K. Jewellers</p>
+              <p className="section-kicker footer-kicker">jk jwellers</p>
             <h3>Trusted jewellery heritage since 1962.</h3>
             <p>
               A traditional jewellery destination at Panna Naka, Chattarpur,
@@ -1693,21 +1693,21 @@ function Footer() {
             <h4>Find Us</h4>
             <div className="map-wrap">
               <iframe
-                src="https://www.google.com/maps?q=New%20J.K.%20Jewellers%2C%20Panna%20Naka%2C%20Chattarpur%2C%20Madhya%20Pradesh&z=16&output=embed"
+                  src="https://www.google.com/maps?q=jk%20jwellers%2C%20Panna%20Naka%2C%20Chattarpur%2C%20Madhya%20Pradesh&z=16&output=embed"
                 width="600"
                 height="450"
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="New J.K. Jewellers location map"
+                  title="jk jwellers location map"
               ></iframe>
             </div>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>New J.K. Jewellers, Panna Naka, Chattarpur</p>
+                <p>jk jwellers, Panna Naka, Chattarpur</p>
           <p>Royal craftsmanship, trusted service, and timeless jewellery.</p>
         </div>
         <div className="footer-credit-strip">
