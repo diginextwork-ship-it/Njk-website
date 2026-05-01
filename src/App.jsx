@@ -607,7 +607,7 @@ function MarqueeStrip({ items, reverse = false }) {
 }
 
 function BrandLogo({ className = "brand-logo", alt = "njk jwellers logo" }) {
-  return <img className={className} src="/new_logo.svg" alt={alt} />;
+  return <img className={className} src="/njk_logo.png" alt={alt} />;
 }
 
 function SectionDivider() {

@@ -198,8 +198,8 @@ a {
 }
 
 .brand-logo {
-  width: clamp(110px, 12vw, 150px);
-  margin-left: -28px;
+  width: clamp(148px, 17vw, 230px);
+  margin-left: -12px;
   height: auto;
   display: block;
   object-fit: contain;
@@ -209,7 +209,7 @@ a {
   border-radius: 0;
   padding: 0;
   box-shadow: none;
-  mix-blend-mode: multiply;
+  mix-blend-mode: normal;
 }
 
 .eyebrow,
@@ -2063,7 +2063,7 @@ a {
 }
 
 .footer-logo {
-  width: clamp(56px, 9vw, 92px);
+  width: clamp(100px, 13vw, 150px);
   height: auto;
   object-fit: contain;
   display: block;
@@ -2073,7 +2073,7 @@ a {
   border-radius: 0;
   padding: 0;
   box-shadow: none;
-  mix-blend-mode: screen;
+  mix-blend-mode: normal;
 }
 
 .footer-contact {
@@ -2658,8 +2658,8 @@ a {
   }
 
   .brand-logo {
-    width: 88px;
-    margin-left: -18px;
+    width: 126px;
+    margin-left: 0;
   }
 
   .about-page-copy h2,
