@@ -5,8 +5,7 @@ const whatsappUrl =
   "https://wa.me/919826237997?text=Hello%20njk%20jwellers%2C%20I%20want%20to%20make%20an%20enquiry.";
 
 // Initialize EmailJS with your public key
-emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "");
-
+emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "");
 
 // Updated submitEnquiry function using EmailJS
 async function submitEnquiry({ name, phone, source }) {
@@ -18,12 +17,12 @@ async function submitEnquiry({ name, phone, source }) {
 
   try {
     const response = await emailjs.send(
-      process.env.REACT_APP_EMAILJS_SERVICE_ID,
-      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
       templateParams,
-      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
     );
-    
+
     if (response.status !== 200) {
       throw new Error("Failed to send enquiry");
     }
