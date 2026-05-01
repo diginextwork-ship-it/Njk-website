@@ -1,23 +1,41 @@
 import React, { useEffect, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const whatsappUrl =
   "https://wa.me/919826237997?text=Hello%20njk%20jwellers%2C%20I%20want%20to%20make%20an%20enquiry.";
 
-// 1. Updated submitEnquiry function - remove email, add phone validation
+// Initialize EmailJS with your public key
+emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "");
+
+
+// Updated submitEnquiry function using EmailJS
 async function submitEnquiry({ name, phone, source }) {
-  const response = await fetch("/api/send-enquiry", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, phone, source }),
-  });
+  const templateParams = {
+    customer_name: name,
+    customer_phone: phone,
+    enquiry_source: source,
+  };
 
-  const result = await response.json().catch(() => ({}));
-
-  if (!response.ok) {
-    throw new Error(result.error || "Unable to send enquiry right now.");
+  try {
+    const response = await emailjs.send(
+      process.env.REACT_APP_EMAILJS_SERVICE_ID,
+      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+      templateParams,
+      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+    );
+    
+    if (response.status !== 200) {
+      throw new Error("Failed to send enquiry");
+    }
+  } catch (error) {
+    console.error("EmailJS Error:", error);
+    throw new Error("Unable to send enquiry right now.");
   }
 }
 
+// ... rest of your existing code remains exactly the same ...
+
+// ... rest of your code remains exactly the same ...
 const topStripItems = [
   "Necklaces",
   "Earrings",
