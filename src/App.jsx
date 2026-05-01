@@ -1,37 +1,22 @@
 import React, { useEffect, useState } from "react";
 
-const googleFormAction = import.meta.env.VITE_GOOGLE_FORM_ACTION?.trim();
-const googleFormNameEntry = import.meta.env.VITE_GOOGLE_FORM_NAME_ENTRY?.trim();
-const googleFormPhoneEntry = import.meta.env.VITE_GOOGLE_FORM_PHONE_ENTRY?.trim();
-const googleFormSourceEntry = import.meta.env.VITE_GOOGLE_FORM_SOURCE_ENTRY?.trim();
 const whatsappUrl =
   "https://wa.me/919826237997?text=Hello%20njk%20jwellers%2C%20I%20want%20to%20make%20an%20enquiry.";
 
-const hasGoogleFormConfig = Boolean(
-  googleFormAction && googleFormNameEntry && googleFormPhoneEntry,
-);
-
-async function submitLeadToGoogleForm({ name, phone, source }) {
-  if (!hasGoogleFormConfig) {
-    throw new Error("Google Form not configured");
-  }
-
-  const payload = new URLSearchParams();
-  payload.append(googleFormNameEntry, name);
-  payload.append(googleFormPhoneEntry, phone);
-
-  if (googleFormSourceEntry) {
-    payload.append(googleFormSourceEntry, source);
-  }
-
-  await fetch(googleFormAction, {
+async function submitEnquiry({ name, phone, email, source }) {
+  const response = await fetch("/api/send-enquiry", {
     method: "POST",
-    mode: "no-cors",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+      "Content-Type": "application/json",
     },
-    body: payload.toString(),
+    body: JSON.stringify({ name, phone, email, source }),
   });
+
+  const result = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(result.error || "Unable to send enquiry right now.");
+  }
 }
 
 const topStripItems = [
@@ -1005,7 +990,7 @@ function LeadModal({ open, onClose }) {
             <p className="section-kicker">Thank You</p>
             <h3 id="lead-modal-title">We will reach out shortly.</h3>
             <p>
-                    Your enquiry has been noted for njk jwellers. You can also
+                    Your enquiry has been sent. Check your email too. You can also
               call directly at <a href="tel:+919826237997">+91 98262 37997</a>.
             </p>
             <button type="button" className="btn btn-solid" onClick={onClose}>
@@ -1029,14 +1014,19 @@ function LeadModal({ open, onClose }) {
                 const formData = new FormData(event.currentTarget);
 
                 try {
-                  await submitLeadToGoogleForm({
+                  await submitEnquiry({
                     name: formData.get("name")?.toString().trim() ?? "",
                     phone: formData.get("phone")?.toString().trim() ?? "",
+                    email: formData.get("email")?.toString().trim() ?? "",
                     source: "Lead Modal",
                   });
                   setSubmitted(true);
                 } catch (submitError) {
-                  setError("Form not linked. Add Google Form env.");
+                  setError(
+                    submitError instanceof Error
+                      ? submitError.message
+                      : "Unable to send enquiry right now.",
+                  );
                 } finally {
                   setSubmitting(false);
                 }
@@ -1052,6 +1042,15 @@ function LeadModal({ open, onClose }) {
                   type="tel"
                   name="phone"
                   placeholder="Your phone number"
+                  required
+                />
+              </label>
+              <label>
+                <span>Email</span>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your email address"
                   required
                 />
               </label>
@@ -1091,7 +1090,7 @@ function ContactSection() {
         {submitted ? (
           <div className="contact-success">
             <strong>Thank you for your enquiry.</strong>
-            <p>We have noted your details and will connect with you soon.</p>
+            <p>We have sent your enquiry and a confirmation email.</p>
           </div>
         ) : (
           <form
@@ -1104,14 +1103,19 @@ function ContactSection() {
               const formData = new FormData(event.currentTarget);
 
               try {
-                await submitLeadToGoogleForm({
+                await submitEnquiry({
                   name: formData.get("name")?.toString().trim() ?? "",
                   phone: formData.get("phone")?.toString().trim() ?? "",
+                  email: formData.get("email")?.toString().trim() ?? "",
                   source: "Contact Section",
                 });
                 setSubmitted(true);
               } catch (submitError) {
-                setError("Form not linked. Add Google Form env.");
+                setError(
+                  submitError instanceof Error
+                    ? submitError.message
+                    : "Unable to send enquiry right now.",
+                );
               } finally {
                 setSubmitting(false);
               }
@@ -1127,6 +1131,15 @@ function ContactSection() {
                 type="tel"
                 name="phone"
                 placeholder="Your phone number"
+                required
+              />
+            </label>
+            <label>
+              <span>Email</span>
+              <input
+                type="email"
+                name="email"
+                placeholder="Your email address"
                 required
               />
             </label>
