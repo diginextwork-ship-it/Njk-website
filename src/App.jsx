@@ -3,13 +3,12 @@ import React, { useEffect, useState } from "react";
 const whatsappUrl =
   "https://wa.me/919826237997?text=Hello%20njk%20jwellers%2C%20I%20want%20to%20make%20an%20enquiry.";
 
-async function submitEnquiry({ name, phone, email, source }) {
+// 1. Updated submitEnquiry function - remove email, add phone validation
+async function submitEnquiry({ name, phone, source }) {
   const response = await fetch("/api/send-enquiry", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ name, phone, email, source }),
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, phone, source }),
   });
 
   const result = await response.json().catch(() => ({}));
@@ -78,12 +77,12 @@ const heroImage = {
 
 const traditionalImage = {
   src: "/traditional.jpeg",
-    alt: "Traditional jewellery display from njk jwellers",
+  alt: "Traditional jewellery display from njk jwellers",
 };
 
 const ownerImage = {
   src: "/owner_pic.png",
-    alt: "Mr. Hemant Soni, owner of njk jwellers",
+  alt: "Mr. Hemant Soni, owner of njk jwellers",
 };
 
 const showcaseItems = [
@@ -179,9 +178,17 @@ const collectionCategories = [
   { id: "earrings", label: "Earrings & Tops", message: "earrings and tops" },
   { id: "necklace", label: "Necklace", message: "necklace" },
   { id: "rings", label: "Rings", message: "rings" },
-  { id: "special-ring-edit", label: "Special Ring Edit", message: "special ring designs" },
+  {
+    id: "special-ring-edit",
+    label: "Special Ring Edit",
+    message: "special ring designs",
+  },
   { id: "chains", label: "Chains", message: "chains" },
-  { id: "bangles-kadas", label: "Bangles & Kadas", message: "bangles and kadas" },
+  {
+    id: "bangles-kadas",
+    label: "Bangles & Kadas",
+    message: "bangles and kadas",
+  },
 ];
 
 const collectionItems = [
@@ -475,7 +482,7 @@ const timelineMilestones = [
   {
     year: "1962",
     title: "The House Begins",
-      text: "njk jwellers opens its doors with a promise of honest guidance and enduring craftsmanship.",
+    text: "njk jwellers opens its doors with a promise of honest guidance and enduring craftsmanship.",
   },
   {
     year: "1987",
@@ -500,10 +507,30 @@ const timelineMilestones = [
 ];
 
 const craftSteps = [
-  { icon: "✎", step: "01", label: "Sketch", text: "Design begins with proportion, motif, and occasion in mind." },
-  { icon: "◌", step: "02", label: "Mould", text: "Foundations are shaped carefully for strength and precision." },
-  { icon: "✦", step: "03", label: "Set", text: "Stones and details are placed with balance and restraint." },
-  { icon: "✧", step: "04", label: "Polish", text: "Final finishing brings warmth, lustre, and heirloom presence." },
+  {
+    icon: "✎",
+    step: "01",
+    label: "Sketch",
+    text: "Design begins with proportion, motif, and occasion in mind.",
+  },
+  {
+    icon: "◌",
+    step: "02",
+    label: "Mould",
+    text: "Foundations are shaped carefully for strength and precision.",
+  },
+  {
+    icon: "✦",
+    step: "03",
+    label: "Set",
+    text: "Stones and details are placed with balance and restraint.",
+  },
+  {
+    icon: "✧",
+    step: "04",
+    label: "Polish",
+    text: "Final finishing brings warmth, lustre, and heirloom presence.",
+  },
 ];
 
 const testimonialItems = [];
@@ -571,7 +598,10 @@ function buildInternalHref({ page = "home", section = "" } = {}) {
   return query ? `?${query}` : window.location.pathname;
 }
 
-function navigateTo({ page = "home", section = "" } = {}, { replace = false } = {}) {
+function navigateTo(
+  { page = "home", section = "" } = {},
+  { replace = false } = {},
+) {
   const targetUrl = buildInternalHref({ page, section });
   window.history[replace ? "replaceState" : "pushState"]({}, "", targetUrl);
   window.dispatchEvent(new Event("routechange"));
@@ -607,7 +637,10 @@ function SectionDivider() {
 
 function TrustBadgesRow() {
   return (
-    <section className="trust-badges reveal-on-scroll delay-2" aria-label="Trust signals">
+    <section
+      className="trust-badges reveal-on-scroll delay-2"
+      aria-label="Trust signals"
+    >
       {trustBadges.map((badge, index) => (
         <article
           key={badge.label}
@@ -716,7 +749,7 @@ function TestimonialsSection() {
 function GoogleReviewsSection() {
   useEffect(() => {
     const existingScript = document.querySelector(
-      'script[src="https://elfsightcdn.com/platform.js"]'
+      'script[src="https://elfsightcdn.com/platform.js"]',
     );
 
     if (existingScript) {
@@ -777,7 +810,11 @@ function FounderSpotlight() {
   return (
     <section className="founder-spotlight reveal-on-scroll">
       <div className="founder-portrait">
-        <img src={ownerImage.src} alt={ownerImage.alt} className="founder-photo" />
+        <img
+          src={ownerImage.src}
+          alt={ownerImage.alt}
+          className="founder-photo"
+        />
         <p>Family Steward</p>
       </div>
 
@@ -786,12 +823,12 @@ function FounderSpotlight() {
         <h3>Mr. Hemant Soni</h3>
         <p className="founder-role">Master Goldsmith - 3rd Generation</p>
         <p className="founder-bio">
-          Mr. Hemant Soni continues a family legacy rooted in trust, measured taste,
-          and personal guidance. His approach is not simply to present jewellery,
-          but to help families choose pieces that suit the meaning of the
-          occasion. With a close eye for classic silhouettes, bridal richness,
-          and lasting value, he has helped preserve the welcoming character that
-                  defines njk jwellers.
+          Mr. Hemant Soni continues a family legacy rooted in trust, measured
+          taste, and personal guidance. His approach is not simply to present
+          jewellery, but to help families choose pieces that suit the meaning of
+          the occasion. With a close eye for classic silhouettes, bridal
+          richness, and lasting value, he has helped preserve the welcoming
+          character that defines njk jwellers.
         </p>
         <div className="founder-signature">Mr. Hemant Soni</div>
       </div>
@@ -861,7 +898,11 @@ function FloatingLocationCard({ open, onClose }) {
   }
 
   return (
-    <div className="floating-location-card fade-rise" role="dialog" aria-label="Showroom details">
+    <div
+      className="floating-location-card fade-rise"
+      role="dialog"
+      aria-label="Showroom details"
+    >
       <button
         type="button"
         className="floating-location-close"
@@ -872,9 +913,43 @@ function FloatingLocationCard({ open, onClose }) {
       </button>
       <p className="section-kicker">Showroom Details</p>
       <p className="floating-location-address">{address}</p>
-      <a className="btn btn-solid full-width" href={mapUrl} target="_blank" rel="noreferrer">
+      <a
+        className="btn btn-solid full-width"
+        href={mapUrl}
+        target="_blank"
+        rel="noreferrer"
+      >
         Open Maps
       </a>
+    </div>
+  );
+}
+
+// 2. QuerySuccess component - success UI for forms
+function QuerySuccess({ onViewCollections }) {
+  return (
+    <div className="query-success">
+      <div className="query-success-tick">
+        <svg viewBox="0 0 52 52" aria-hidden="true">
+          <circle cx="26" cy="26" r="25" className="tick-circle" />
+          <path d="M14 27l8 8 16-16" className="tick-check" />
+        </svg>
+      </div>
+      <strong className="query-success-title">
+        We have received your query.
+      </strong>
+      <p className="query-success-sub">Our team will reach you shortly.</p>
+      <div className="query-success-divider">◆</div>
+      <p className="query-success-cta-label">
+        Lets explore our collection online
+      </p>
+      <button
+        type="button"
+        className="btn btn-solid"
+        onClick={onViewCollections}
+      >
+        View Collections
+      </button>
     </div>
   );
 }
@@ -889,7 +964,7 @@ function Header({ page, menuOpen, onMenuToggle, onNavigate }) {
         <BrandLogo />
         <div>
           <p className="eyebrow">Since 1962</p>
-              <h1>njk jwellers</h1>
+          <h1>njk jwellers</h1>
         </div>
       </div>
 
@@ -959,6 +1034,7 @@ function Header({ page, menuOpen, onMenuToggle, onNavigate }) {
   );
 }
 
+// 3. Updated LeadModal - remove email field, add phone validation, use QuerySuccess
 function LeadModal({ open, onClose }) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -986,17 +1062,12 @@ function LeadModal({ open, onClose }) {
         </button>
 
         {submitted ? (
-          <div className="lead-confirmation">
-            <p className="section-kicker">Thank You</p>
-            <h3 id="lead-modal-title">We will reach out shortly.</h3>
-            <p>
-                    Your enquiry has been sent. Check your email too. You can also
-              call directly at <a href="tel:+919826237997">+91 98262 37997</a>.
-            </p>
-            <button type="button" className="btn btn-solid" onClick={onClose}>
-              Close
-            </button>
-          </div>
+          <QuerySuccess
+            onViewCollections={() => {
+              onClose();
+              navigateTo({ page: "collections" });
+            }}
+          />
         ) : (
           <>
             <p className="section-kicker">Contact Us</p>
@@ -1009,15 +1080,17 @@ function LeadModal({ open, onClose }) {
               onSubmit={async (event) => {
                 event.preventDefault();
                 setError("");
-                setSubmitting(true);
-
                 const formData = new FormData(event.currentTarget);
-
+                const phone = formData.get("phone")?.toString().trim() ?? "";
+                if (!/^\d{10}$/.test(phone)) {
+                  setError("Please enter a valid 10-digit phone number.");
+                  return;
+                }
+                setSubmitting(true);
                 try {
                   await submitEnquiry({
                     name: formData.get("name")?.toString().trim() ?? "",
-                    phone: formData.get("phone")?.toString().trim() ?? "",
-                    email: formData.get("email")?.toString().trim() ?? "",
+                    phone,
                     source: "Lead Modal",
                   });
                   setSubmitted(true);
@@ -1034,24 +1107,21 @@ function LeadModal({ open, onClose }) {
             >
               <label>
                 <span>Name</span>
-                <input type="text" name="name" placeholder="Your name" required />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                />
               </label>
               <label>
                 <span>Phone Number</span>
                 <input
                   type="tel"
                   name="phone"
-                  placeholder="Your phone number"
+                  placeholder="10-digit phone number"
                   required
-                />
-              </label>
-              <label>
-                <span>Email</span>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your email address"
-                  required
+                  maxLength={10}
                 />
               </label>
               {error ? <p className="form-error">{error}</p> : null}
@@ -1070,6 +1140,7 @@ function LeadModal({ open, onClose }) {
   );
 }
 
+// 4. Updated ContactSection - remove email field, add phone validation, use QuerySuccess
 function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -1088,25 +1159,26 @@ function ContactSection() {
 
       <div className="contact-card">
         {submitted ? (
-          <div className="contact-success">
-            <strong>Thank you for your enquiry.</strong>
-            <p>We have sent your enquiry and a confirmation email.</p>
-          </div>
+          <QuerySuccess
+            onViewCollections={() => navigateTo({ page: "collections" })}
+          />
         ) : (
           <form
             className="contact-form"
             onSubmit={async (event) => {
               event.preventDefault();
               setError("");
-              setSubmitting(true);
-
               const formData = new FormData(event.currentTarget);
-
+              const phone = formData.get("phone")?.toString().trim() ?? "";
+              if (!/^\d{10}$/.test(phone)) {
+                setError("Please enter a valid 10-digit phone number.");
+                return;
+              }
+              setSubmitting(true);
               try {
                 await submitEnquiry({
                   name: formData.get("name")?.toString().trim() ?? "",
-                  phone: formData.get("phone")?.toString().trim() ?? "",
-                  email: formData.get("email")?.toString().trim() ?? "",
+                  phone,
                   source: "Contact Section",
                 });
                 setSubmitted(true);
@@ -1130,17 +1202,9 @@ function ContactSection() {
               <input
                 type="tel"
                 name="phone"
-                placeholder="Your phone number"
+                placeholder="10-digit phone number"
                 required
-              />
-            </label>
-            <label>
-              <span>Email</span>
-              <input
-                type="email"
-                name="email"
-                placeholder="Your email address"
-                required
+                maxLength={10}
               />
             </label>
             {error ? <p className="form-error">{error}</p> : null}
@@ -1164,14 +1228,19 @@ function AboutPage() {
       <section className="about-page-hero fade-rise delay-1">
         <div className="about-page-copy">
           <p className="section-kicker">About Us</p>
-          <h2>A legacy of trust, tradition, and personal jewellery guidance.</h2>
+          <h2>
+            A legacy of trust, tradition, and personal jewellery guidance.
+          </h2>
           <p className="lead">
-                njk jwellers has served families since 1962 with a showroom
+            njk jwellers has served families since 1962 with a showroom
             experience built on dependable service, classic taste, and warm
             personal attention under the guidance of Mr. Hemant Soni.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-solid" href={buildInternalHref({ page: "home", section: "visit" })}>
+            <a
+              className="btn btn-solid"
+              href={buildInternalHref({ page: "home", section: "visit" })}
+            >
               Visit The Showroom
             </a>
             <a className="btn btn-outline" href="tel:+919826237997">
@@ -1249,12 +1318,11 @@ function AboutPage() {
             </div>
 
             <p className="about-lead">
-                njk jwellers is a long-standing jewellery showroom serving
-              the local community since <strong>1962</strong>. Under the
-              guidance of owner <strong>Mr. Hemant Soni</strong>, the showroom is
-              known for a dependable approach, respectful service, and jewellery
-              curated for everyday elegance and cherished family occasions
-              alike.
+              njk jwellers is a long-standing jewellery showroom serving the
+              local community since <strong>1962</strong>. Under the guidance of
+              owner <strong>Mr. Hemant Soni</strong>, the showroom is known for
+              a dependable approach, respectful service, and jewellery curated
+              for everyday elegance and cherished family occasions alike.
             </p>
             <p className="about-body">
               Located at <strong>Panna Naka</strong>, In front of Parmar
@@ -1271,7 +1339,9 @@ function AboutPage() {
               />
               <div className="about-traditional-copy">
                 <p className="card-label">Traditional Collection</p>
-                <strong>Classic styles that reflect the store's heritage.</strong>
+                <strong>
+                  Classic styles that reflect the store's heritage.
+                </strong>
               </div>
             </div>
             <p className="about-body">
@@ -1320,9 +1390,9 @@ function AboutPage() {
           <p className="section-kicker">Showroom Details</p>
           <h3>Come experience the collection in person.</h3>
           <p>
-                Visit njk jwellers at {address} We welcome you for bridal
-            shopping, festive jewellery, gifting, and classic daily-wear
-            selections with personal assistance at every step.
+            Visit njk jwellers at {address} We welcome you for bridal shopping,
+            festive jewellery, gifting, and classic daily-wear selections with
+            personal assistance at every step.
           </p>
         </div>
 
@@ -1345,9 +1415,12 @@ function AboutPage() {
 function CollectionPage() {
   const [activeCategory, setActiveCategory] = useState("necklace");
 
-  const filteredItems = collectionItems.filter((item) => item.category === activeCategory);
+  const filteredItems = collectionItems.filter(
+    (item) => item.category === activeCategory,
+  );
   const activeCollection =
-    collectionCategories.find((item) => item.id === activeCategory) ?? collectionCategories[1];
+    collectionCategories.find((item) => item.id === activeCategory) ??
+    collectionCategories[1];
 
   return (
     <main>
@@ -1369,7 +1442,11 @@ function CollectionPage() {
             <h3>Choose from all jewellery sections.</h3>
           </div>
 
-          <div className="collections-tabs" role="tablist" aria-label="Jewellery categories">
+          <div
+            className="collections-tabs"
+            role="tablist"
+            aria-label="Jewellery categories"
+          >
             {collectionCategories.map((item) => (
               <button
                 key={item.id}
@@ -1385,7 +1462,11 @@ function CollectionPage() {
           </div>
         </div>
 
-        <div key={activeCategory} className="collections-grid" aria-live="polite">
+        <div
+          key={activeCategory}
+          className="collections-grid"
+          aria-live="polite"
+        >
           {filteredItems.map((item, index) => (
             <article
               key={item.src}
@@ -1393,10 +1474,16 @@ function CollectionPage() {
               style={{ "--card-delay": `${index * 70}ms` }}
             >
               <div className="collection-product-media">
-                <img src={item.src} alt={item.alt} className="collection-product-image" />
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="collection-product-image"
+                />
               </div>
               <div className="collection-product-body">
-                <span className="collection-product-tag">{activeCollection.label}</span>
+                <span className="collection-product-tag">
+                  {activeCollection.label}
+                </span>
                 <h4>{item.title}</h4>
                 <a
                   className="btn btn-whatsapp full-width"
@@ -1427,10 +1514,9 @@ function HomePage() {
           <p className="section-kicker">Timeless Craft, Heirloom Detail</p>
           <h2>Jewellery chosen with trust, tradition, and royal elegance.</h2>
           <p className="lead">
-                njk jwellers has been serving customers since 1962 with
-            carefully selected bridal, festive, traditional, and everyday
-            jewellery pieces in a welcoming showroom experience led by owner
-            Mr. Hemant Soni.
+            njk jwellers has been serving customers since 1962 with carefully
+            selected bridal, festive, traditional, and everyday jewellery pieces
+            in a welcoming showroom experience led by owner Mr. Hemant Soni.
           </p>
           <div className="hero-stats">
             <div>
@@ -1447,10 +1533,16 @@ function HomePage() {
             </div>
           </div>
           <div className="hero-actions">
-            <a className="btn btn-solid" href={buildInternalHref({ page: "home", section: "visit" })}>
+            <a
+              className="btn btn-solid"
+              href={buildInternalHref({ page: "home", section: "visit" })}
+            >
               Plan Your Visit
             </a>
-            <a className="btn btn-outline" href={buildInternalHref({ page: "about" })}>
+            <a
+              className="btn btn-outline"
+              href={buildInternalHref({ page: "about" })}
+            >
               About Us
             </a>
           </div>
@@ -1491,7 +1583,10 @@ function HomePage() {
 
         <div className="showcase-grid">
           {showcaseItems.map((item, index) => (
-            <article key={item.title} className={`showcase-tile tile-${index + 1}`}>
+            <article
+              key={item.title}
+              className={`showcase-tile tile-${index + 1}`}
+            >
               <div className="showcase-image-wrap">
                 <img src={item.src} alt={item.alt} className="media-image" />
                 <div className="tile-badge">0{index + 1}</div>
@@ -1525,7 +1620,11 @@ function HomePage() {
           {galleryItems.map((item, index) => (
             <article key={item.src} className="gallery-tile">
               <div className="gallery-tile-img-wrap">
-                <img src={item.src} alt={item.alt} className="gallery-tile-img" />
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="gallery-tile-img"
+                />
               </div>
               <div className="gallery-tile-info">
                 <span className="gallery-tile-num">0{index + 1}</span>
@@ -1575,14 +1674,20 @@ function HomePage() {
               </h3>
               <p>
                 A rich display of elegant earrings, necklace sets, and
-                occasion-ready styles that reflect the classic identity of
-                  njk jwellers.
+                occasion-ready styles that reflect the classic identity of njk
+                jwellers.
               </p>
               <div className="hero-actions">
-                <a className="btn btn-outline" href={buildInternalHref({ page: "home", section: "visit" })}>
+                <a
+                  className="btn btn-outline"
+                  href={buildInternalHref({ page: "home", section: "visit" })}
+                >
                   Book A Visit
                 </a>
-                <a className="btn btn-solid" href={buildInternalHref({ page: "home", section: "contact" })}>
+                <a
+                  className="btn btn-solid"
+                  href={buildInternalHref({ page: "home", section: "contact" })}
+                >
                   Make Enquiry
                 </a>
               </div>
@@ -1620,9 +1725,9 @@ function HomePage() {
           <p className="section-kicker">Visit The Showroom</p>
           <h3>Come experience the collection in person.</h3>
           <p>
-                Visit njk jwellers at {address} We welcome you for bridal
-            shopping, festive jewellery, gifting, and classic daily-wear
-            selections with personal assistance at every step.
+            Visit njk jwellers at {address} We welcome you for bridal shopping,
+            festive jewellery, gifting, and classic daily-wear selections with
+            personal assistance at every step.
           </p>
         </div>
 
@@ -1666,8 +1771,12 @@ function Footer() {
               <circle cx="110" cy="110" r="98" className="seal-outer" />
               <circle cx="110" cy="110" r="78" className="seal-inner" />
               <text className="seal-text">
-                <textPath href="#seal-circle" startOffset="50%" textAnchor="middle">
-                NJK JWELLERS • HERITAGE HOUSE •
+                <textPath
+                  href="#seal-circle"
+                  startOffset="50%"
+                  textAnchor="middle"
+                >
+                  NJK JWELLERS • HERITAGE HOUSE •
                 </textPath>
               </text>
               <text x="110" y="100" textAnchor="middle" className="seal-year">
@@ -1683,13 +1792,13 @@ function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <BrandLogo className="footer-logo" />
-              <p className="section-kicker footer-kicker">njk jwellers</p>
+            <p className="section-kicker footer-kicker">njk jwellers</p>
             <h3>Trusted jewellery heritage since 1962.</h3>
             <p>
               A traditional jewellery destination at Panna Naka, In front of
-              Parmar Hospital, Beside Jain Chhole Bhature Chhatarpur MP,
-              known for elegant designs, reliable service, and a personal
-              shopping experience guided by Mr. Hemant Soni.
+              Parmar Hospital, Beside Jain Chhole Bhature Chhatarpur MP, known
+              for elegant designs, reliable service, and a personal shopping
+              experience guided by Mr. Hemant Soni.
             </p>
           </div>
 
@@ -1706,27 +1815,31 @@ function Footer() {
             <h4>Find Us</h4>
             <div className="map-wrap">
               <iframe
-                  src="https://www.google.com/maps?q=njk%20jwellers%2C%20Panna%20Naka%2C%20In%20front%20of%20Parmar%20Hospital%2C%20Beside%20Jain%20Chhole%20Bhature%20Chhatarpur%20MP&z=16&output=embed"
+                src="https://www.google.com/maps?q=njk%20jwellers%2C%20Panna%20Naka%2C%20In%20front%20of%20Parmar%20Hospital%2C%20Beside%20Jain%20Chhole%20Bhature%20Chhatarpur%20MP&z=16&output=embed"
                 width="600"
                 height="450"
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                  title="njk jwellers location map"
+                title="njk jwellers location map"
               ></iframe>
             </div>
           </div>
         </div>
 
         <div className="footer-bottom">
-                <p>njk jwellers, Panna Naka, Chhatarpur MP</p>
+          <p>njk jwellers, Panna Naka, Chhatarpur MP</p>
           <p>Royal craftsmanship, trusted service, and timeless jewellery.</p>
         </div>
         <div className="footer-credit-strip">
           <a href="/svg_info.svg" target="_blank" rel="noreferrer">
             <span>Like the website? We are</span>
-            <img src="/svg_info.svg" alt="svg_info logo" className="footer-credit-logo" />
+            <img
+              src="/svg_info.svg"
+              alt="svg_info logo"
+              className="footer-credit-logo"
+            />
           </a>
         </div>
       </div>
@@ -1793,7 +1906,7 @@ function App() {
           }
         });
       },
-      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" },
     );
 
     nodes.forEach((node) => observer.observe(node));
@@ -1841,7 +1954,13 @@ function App() {
         onClose={() => setLocationCardOpen(false)}
       />
 
-      {page === "about" ? <AboutPage /> : page === "collections" ? <CollectionPage /> : <HomePage />}
+      {page === "about" ? (
+        <AboutPage />
+      ) : page === "collections" ? (
+        <CollectionPage />
+      ) : (
+        <HomePage />
+      )}
       <Footer />
     </div>
   );
