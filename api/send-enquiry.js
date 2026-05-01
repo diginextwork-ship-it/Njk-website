@@ -39,7 +39,10 @@ export default async function handler(request) {
     const { name, phone, email, source } = await request.json();
 
     if (!name || !phone || !email || !source) {
-      return json({ error: "Name, phone, email, and source are required." }, 400);
+      return json(
+        { error: "Name, phone, email, and source are required." },
+        400,
+      );
     }
 
     if (!isValidEmail(email)) {
