@@ -1595,7 +1595,7 @@ function HomePage() {
       >
         <div className="showcase-heading">
           <p className="section-kicker">Featured Frames</p>
-          <h3>Real product photography added from your public folder</h3>
+          <h3>Signature pieces, captured in true detail</h3>
         </div>
 
         <div className="showcase-grid">
