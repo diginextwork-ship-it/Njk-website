@@ -202,6 +202,11 @@ const collectionCategories = [
   },
   { id: "chains", label: "Chains", message: "chains" },
   {
+    id: "hollow-chains",
+    label: "Hollow Chains",
+    message: "hollow chain designs",
+  },
+  {
     id: "bangles-kadas",
     label: "Bangles & Kadas",
     message: "bangles and kadas",
@@ -472,6 +477,49 @@ const collectionItems = [
     alt: "Gold chains design",
     category: "chains",
     title: "Signature Chains",
+  },
+  {
+    src: "/chains/hollow-chains/cover-image.jpeg",
+    alt: "Hollow chains collection cover",
+    category: "chains",
+    title: "Hollow Chains",
+    opensCategory: "hollow-chains",
+  },
+  {
+    src: "/chains/hollow-chains/70gm.jpeg",
+    alt: "70 gram hollow chain design",
+    category: "hollow-chains",
+    title: "70gm Hollow Chain",
+  },
+  {
+    src: "/chains/hollow-chains/100gm.jpeg",
+    alt: "100 gram hollow chain design",
+    category: "hollow-chains",
+    title: "100gm Hollow Chain",
+  },
+  {
+    src: "/chains/hollow-chains/110gm.jpeg",
+    alt: "110 gram hollow chain design",
+    category: "hollow-chains",
+    title: "110gm Hollow Chain",
+  },
+  {
+    src: "/chains/hollow-chains/120gm.jpeg",
+    alt: "120 gram hollow chain design",
+    category: "hollow-chains",
+    title: "120gm Hollow Chain",
+  },
+  {
+    src: "/chains/hollow-chains/150gm.jpeg",
+    alt: "150 gram hollow chain design",
+    category: "hollow-chains",
+    title: "150gm Hollow Chain",
+  },
+  {
+    src: "/chains/hollow-chains/special.jpeg",
+    alt: "Special hollow chain design",
+    category: "hollow-chains",
+    title: "Special Hollow Chain",
   },
   {
     src: "/bangles-kadas/bangles1.jpeg",
@@ -1487,8 +1535,25 @@ function CollectionPage() {
           {filteredItems.map((item, index) => (
             <article
               key={item.src}
-              className="collection-product-card"
+              className={`collection-product-card${item.opensCategory ? " collection-cover-card" : ""}`}
               style={{ "--card-delay": `${index * 70}ms` }}
+              onClick={
+                item.opensCategory
+                  ? () => setActiveCategory(item.opensCategory)
+                  : undefined
+              }
+              onKeyDown={
+                item.opensCategory
+                  ? (event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        setActiveCategory(item.opensCategory);
+                      }
+                    }
+                  : undefined
+              }
+              role={item.opensCategory ? "button" : undefined}
+              tabIndex={item.opensCategory ? 0 : undefined}
             >
               <div className="collection-product-media">
                 <img
@@ -1502,18 +1567,28 @@ function CollectionPage() {
                   {activeCollection.label}
                 </span>
                 <h4>{item.title}</h4>
-                <a
-                  className="btn btn-whatsapp full-width"
-                  href={`https://wa.me/919826237997?text=${encodeURIComponent(`Interested in ${activeCollection.message} from njk jwellers`)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`WhatsApp about ${item.title}`}
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M20.52 3.48A11.83 11.83 0 0 0 12.09.02C5.58.02.27 5.33.27 11.84c0 2.09.55 4.13 1.6 5.92L0 24l6.43-1.83a11.8 11.8 0 0 0 5.66 1.45h.01c6.51 0 11.82-5.31 11.82-11.82 0-3.16-1.23-6.12-3.4-8.32ZM12.1 21.62h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.82 1.09 1.12-3.72-.23-.38a9.82 9.82 0 0 1-1.51-5.19c0-5.42 4.41-9.83 9.84-9.83 2.62 0 5.09 1.02 6.93 2.88a9.72 9.72 0 0 1 2.87 6.94c0 5.42-4.41 9.83-9.83 9.83Zm5.39-7.36c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.66.15-.2.3-.76.98-.93 1.18-.17.2-.34.22-.64.08-.3-.15-1.24-.46-2.37-1.47-.87-.78-1.46-1.74-1.63-2.03-.17-.3-.02-.45.13-.6.13-.13.3-.34.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.66-.5-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.46 0 1.45 1.07 2.85 1.22 3.05.15.2 2.09 3.19 5.06 4.47.71.31 1.27.49 1.71.62.72.23 1.37.2 1.88.12.57-.08 1.78-.73 2.03-1.44.25-.7.25-1.3.17-1.43-.08-.13-.27-.2-.57-.35Z" />
-                  </svg>
-                  <span>Enquire Now</span>
-                </a>
+                {item.opensCategory ? (
+                  <button
+                    className="btn btn-outline full-width collection-open-btn"
+                    type="button"
+                    onClick={() => setActiveCategory(item.opensCategory)}
+                  >
+                    View Hollow Chains
+                  </button>
+                ) : (
+                  <a
+                    className="btn btn-whatsapp full-width"
+                    href={`https://wa.me/919826237997?text=${encodeURIComponent(`Interested in ${item.title} from njk jwellers`)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`WhatsApp about ${item.title}`}
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M20.52 3.48A11.83 11.83 0 0 0 12.09.02C5.58.02.27 5.33.27 11.84c0 2.09.55 4.13 1.6 5.92L0 24l6.43-1.83a11.8 11.8 0 0 0 5.66 1.45h.01c6.51 0 11.82-5.31 11.82-11.82 0-3.16-1.23-6.12-3.4-8.32ZM12.1 21.62h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.82 1.09 1.12-3.72-.23-.38a9.82 9.82 0 0 1-1.51-5.19c0-5.42 4.41-9.83 9.84-9.83 2.62 0 5.09 1.02 6.93 2.88a9.72 9.72 0 0 1 2.87 6.94c0 5.42-4.41 9.83-9.83 9.83Zm5.39-7.36c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.66.15-.2.3-.76.98-.93 1.18-.17.2-.34.22-.64.08-.3-.15-1.24-.46-2.37-1.47-.87-.78-1.46-1.74-1.63-2.03-.17-.3-.02-.45.13-.6.13-.13.3-.34.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.66-.5-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.46 0 1.45 1.07 2.85 1.22 3.05.15.2 2.09 3.19 5.06 4.47.71.31 1.27.49 1.71.62.72.23 1.37.2 1.88.12.57-.08 1.78-.73 2.03-1.44.25-.7.25-1.3.17-1.43-.08-.13-.27-.2-.57-.35Z" />
+                    </svg>
+                    <span>Enquire Now</span>
+                  </a>
+                )}
               </div>
             </article>
           ))}
